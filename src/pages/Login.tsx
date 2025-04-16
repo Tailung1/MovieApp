@@ -7,18 +7,26 @@ export default function SignUp() {
     e.preventDefault();
   };
   return (
-    <div className=' flex justify-center items-center bg-[#10141E]  h-[100vh]'>
-      <div className='bg-[#161D2F] rounded-[10px] flex flex-col gap-[40px] pt-[24px] pb-[32px] px-[24px]'>
-        <h2 className='text-white text-3xl'>Login</h2>
+    <div className=' flex  justify-center items-center bg-[#10141E]  h-[100vh]'>
+      <div className='bg-[#161D2F] rounded-[10px] flex flex-col gap-[70px] pt-[24px] pb-[32px] px-[24px]'>
+        <h2 className='text-violet-500 text-3xl'>Login</h2>
         <form
           onSubmit={handleSubmit}
           className='flex flex-col gap-[40px]'
         >
-          <div className='flex flex-col gap-6'>
-            <div className=' relative flex flex-col gap-3'>
+          <div className='flex flex-col gap-11'>
+            <div className='relative'>
+              <label
+                className={`absolute left-0  text-[#b4c4db] transition-all duration-300 ${
+                  email.length > 0
+                    ? "text-[14px] bottom-9 text-orange-400"
+                    : "text-[20px] bottom-2"
+                }`}
+              >
+                Email adress
+              </label>
               <input
-                placeholder='Email adress'
-                className='  text-orange-400 text-[20px] bg-transparent outline-none focus:outline-none'
+                className=' text-[20px] text-white bg-transparent outline-none focus:outline-none'
                 type='text'
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setEmail(e.target.value)
@@ -27,6 +35,16 @@ export default function SignUp() {
               <hr className='h-px bg-[#5A698F] border-none  ' />
             </div>
             <div className='relative '>
+              <label
+                htmlFor='email'
+                className={`absolute left-0 text-[#b4c4db] transition-all duration-300 ${
+                  password.length > 0
+                    ? "text-[14px] bottom-9 text-orange-400"
+                    : "text-[20px] bottom-2"
+                }`}
+              >
+                Password
+              </label>
               <input
                 type='password'
                 id='email'
@@ -34,18 +52,9 @@ export default function SignUp() {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setPassword(e.target.value)
                 }
-                className='w-full bg-transparent text-white text-[20px] outline-none pt-6 pb-2'
+                className='w-full bg-transparent text-white text-[20px] outline-none '
               />
-              <label
-                htmlFor='email'
-                className={`absolute left-0 text-[#b4c4db] transition-all duration-300 ${
-                  password.length > 0
-                    ? "text-[14px] top-0 text-orange-400"
-                    : "text-[20px] top-6 "
-                }`}
-              >
-                Password
-              </label>
+
               <hr className='h-px bg-[#5A698F] border-none ' />
             </div>
           </div>
