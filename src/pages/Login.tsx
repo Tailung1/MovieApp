@@ -1,4 +1,5 @@
-import { ChangeEvent, useState } from "react";
+import {  useState } from "react";
+import FloatingInput from "./FloatingInput";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -15,48 +16,13 @@ export default function SignUp() {
           className='flex flex-col gap-[40px]'
         >
           <div className='flex flex-col gap-11'>
-            <div className='relative'>
-              <label
-                className={`absolute left-0  text-[#b4c4db] transition-all duration-300 ${
-                  email.length > 0
-                    ? "text-[14px] bottom-9 text-orange-400"
-                    : "text-[20px] bottom-2"
-                }`}
-              >
-                Email adress
-              </label>
-              <input
-                className=' text-[20px] text-white bg-transparent outline-none focus:outline-none'
-                type='text'
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setEmail(e.target.value)
-                }
-              />
-              <hr className='h-px bg-[#5A698F] border-none  ' />
-            </div>
-            <div className='relative '>
-              <label
-                htmlFor='email'
-                className={`absolute left-0 text-[#b4c4db] transition-all duration-300 ${
-                  password.length > 0
-                    ? "text-[14px] bottom-9 text-orange-400"
-                    : "text-[20px] bottom-2"
-                }`}
-              >
-                Password
-              </label>
-              <input
-                type='password'
-                id='email'
-                value={password}
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value)
-                }
-                className='w-full bg-transparent text-white text-[20px] outline-none '
-              />
-
-              <hr className='h-px bg-[#5A698F] border-none ' />
-            </div>
+            <FloatingInput
+              label='Email adress'
+              value={email}
+              type='text'
+              onChange={(e) => setEmail(e.target.value)}
+            />
+           <FloatingInput value={password} label="Password" type="text" onChange={(e)=>setPassword(e.target.value)} />
           </div>
           <div className='flex flex-col items-center gap-[24px]'>
             <button
