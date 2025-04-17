@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FloatingInput from "./FloatingInput";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion"; // 🪄 import motion
+import { motion } from "framer-motion";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -9,6 +9,10 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [error, setError] = useState<string>("");
+  const [emailError, setEmailError] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<boolean>(false);
+  const [repearPasswordError, setRepearPasswordError] =
+    useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -51,18 +55,20 @@ export default function SignUp() {
             <FloatingInput
               label='Email address'
               value={email}
-
+              hasError={emailError}
               onChange={(e) => setEmail(e.target.value)}
             />
             <FloatingInput
               value={password}
               label='Password'
               onChange={(e) => setPassword(e.target.value)}
+              hasError={passwordError}
             />
             <FloatingInput
               value={repeatPassword}
               label='Repeat Password'
               onChange={(e) => setRepeatPassword(e.target.value)}
+              hasError={repearPasswordError}
             />
           </div>
           <div className='flex flex-col relative items-center gap-[24px]'>
