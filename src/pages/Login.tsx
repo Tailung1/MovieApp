@@ -50,13 +50,12 @@ export default function SignUp() {
             <FloatingInput
               label='Email adress'
               value={email}
-              type='text'
+
               onChange={(e) => setEmail(e.target.value)}
             />
             <FloatingInput
               value={password}
               label='Password'
-              type='text'
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>

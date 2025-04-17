@@ -51,19 +51,17 @@ export default function SignUp() {
             <FloatingInput
               label='Email address'
               value={email}
-              type='email'
+
               onChange={(e) => setEmail(e.target.value)}
             />
             <FloatingInput
               value={password}
               label='Password'
-              type='password'
               onChange={(e) => setPassword(e.target.value)}
             />
             <FloatingInput
               value={repeatPassword}
               label='Repeat Password'
-              type='password'
               onChange={(e) => setRepeatPassword(e.target.value)}
             />
           </div>

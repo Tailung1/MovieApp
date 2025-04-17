@@ -1,34 +1,37 @@
-import { ChangeEvent } from "react";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
-interface floatinInputProps {
-  value: string;
-  label: string;
-  type: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-}
 export default function FloatingInput({
   label,
   value,
   onChange,
-  type,
-}: floatinInputProps) {
+}: {
+  label: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}) {
+  const [showPassword, setShowPassword] = useState(false);
+  const isPassword = label.toLowerCase().includes("password");
+
   return (
-    <div className='relative'>
-      <label
-        className={`absolute left-2  text-[#b4c4db] transition-all duration-300 ${
-          value.length > 0
-            ? "text-[14px] bottom-9 text-orange-400"
-            : "text-[20px] bottom-2"
-        }`}
-      >
-        {label}
-      </label>
+    <div className='relative w-full'>
       <input
-        className=' text-[20px] text-white bg-transparent outline-none focus:outline-none'
-        type={type}
+        className='w-full text-[20px] text-white bg-transparent border-b border-gray-500 py-2 pr-10 outline-none'
+        type={
+          isPassword ? (showPassword ? "text" : "password") : "text"
+        }
+        value={value}
         onChange={onChange}
+        placeholder={label}
       />
-      <hr className='h-px bg-[#5A698F] border-none  ' />
+      {isPassword && (
+        <span
+          className='absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400'
+          onClick={() => setShowPassword((prev) => !prev)}
+        >
+          {showPassword ? <EyeOff size={22} /> : <Eye size={22} />}
+        </span>
+      )}
     </div>
   );
 }
