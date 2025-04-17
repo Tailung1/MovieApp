@@ -8,9 +8,16 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<boolean>(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const emailIsEmpty = email.trim() === "";
+    const passwordIsEmpty = password.trim() === "";
+
+    setEmailError(emailIsEmpty);
+    setPasswordError(passwordIsEmpty);
     const storedUser = localStorage.getItem("user");
     if (!storedUser) {
       setError(true);
@@ -23,8 +30,8 @@ export default function SignUp() {
     ) {
       navigate("/home");
     } else {
-        setError(true);
-        return;
+      setError(true);
+      return;
     }
   };
 
@@ -50,18 +57,21 @@ export default function SignUp() {
             <FloatingInput
               label='Email adress'
               value={email}
-
               onChange={(e) => setEmail(e.target.value)}
+              hasError={emailError}
             />
             <FloatingInput
               value={password}
               label='Password'
               onChange={(e) => setPassword(e.target.value)}
+              hasError={passwordError}
             />
           </div>
           <div className='flex flex-col relative items-center gap-[24px]'>
             <p className='text-yellow-400 top-[-30px] absolute'>
-              {error ? "Incorrect email or password" : ""}
+              {error && !passwordError && !emailError
+                ? "Incorrect email or password"
+                : ""}
             </p>
             <button
               type='submit'
