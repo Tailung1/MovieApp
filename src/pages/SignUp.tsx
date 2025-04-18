@@ -30,9 +30,6 @@ type Actions =
   | { type: "SET_PASSWORD"; payload: string }
   | { type: "SET_REPEATPASSWORD"; payload: string }
   | { type: "ALL_FILL" }
-  //   | { type: "CHECK_INPUTS" }
-  //   | { type: "CHECK_PASSWORD" }
-  //   | { type: "CHECK_PASSWORDREPEAT" }
   | { type: "PASSWORDSMATCHES" };
 
 function reducer(state: initialStateTypes, action: Actions) {
