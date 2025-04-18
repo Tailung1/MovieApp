@@ -2,7 +2,7 @@ import FloatingInput from "./FloatingInput";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useReducer } from "react";
-
+ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 interface initialStateTypes {
   email: string;
   password: string;
@@ -12,6 +12,7 @@ interface initialStateTypes {
   passwordError: boolean;
   repeatPasswordError: boolean;
   allFill: boolean;
+  isClicked:boolean
 }
 
 const initialState: initialStateTypes = {
@@ -23,19 +24,30 @@ const initialState: initialStateTypes = {
   passwordError: false,
   repeatPasswordError: false,
   allFill: false,
+  isClicked:false
 };
 
 type Actions =
   | { type: "SET_EMAIL"; payload: string }
+  | { type: "SET_EMAIL_ERROR" }
   | { type: "SET_PASSWORD"; payload: string }
   | { type: "SET_REPEATPASSWORD"; payload: string }
   | { type: "ALL_FILL" }
-  | { type: "PASSWORDSMATCHES" };
+  | { type: "PASSWORDSMATCHES" }
+  | { type: "IS_CLICKED" };
 
 function reducer(state: initialStateTypes, action: Actions) {
   switch (action.type) {
     case "SET_EMAIL":
-      return { ...state, email: action.payload };
+      const emailIsValid = emailRegex.test(action.payload);
+      return {
+        ...state,
+        email: action.payload,
+        emailError: state.isClicked ? !emailIsValid : false, // Only show error if user already submitted
+      };
+
+    case "SET_EMAIL_ERROR":
+      return { ...state, emailError: true };
     case "SET_PASSWORD":
       return { ...state, password: action.payload };
     case "SET_REPEATPASSWORD":
@@ -59,16 +71,20 @@ function reducer(state: initialStateTypes, action: Actions) {
         repeatPasswordError: passwordMatches,
         error: "Passwords do not match.",
       };
+    case "IS_CLICKED":
+      return { ...state, isClicked: true };
   }
 }
 
 export default function SignUp() {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, initialState);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    dispatch({type:"IS_CLICKED"})
     const emailIsEmpty = state.email.trim() === "";
     const passwordIsEmpty = state.password.trim() === "";
     const repeatPasswordIsEmpty = state.repeatPassword.trim() === "";
@@ -90,6 +106,10 @@ export default function SignUp() {
       }
 
       return; // 🛑 Stop submit
+    }
+    if(!emailRegex.test(state.email)) {
+        dispatch({type:"SET_EMAIL_ERROR"})
+        return
     }
 
     localStorage.setItem(
@@ -126,6 +146,7 @@ export default function SignUp() {
               label='Email address'
               value={state.email}
               hasError={state.emailError}
+              isClicked={state.isClicked}
               onChange={(e) =>
                 dispatch({
                   type: "SET_EMAIL",
@@ -135,6 +156,7 @@ export default function SignUp() {
             />
             <FloatingInput
               value={state.password}
+              isClicked={state.isClicked}
               label='Password'
               onChange={(e) =>
                 dispatch({
@@ -147,6 +169,7 @@ export default function SignUp() {
             <FloatingInput
               value={state.repeatPassword}
               label='Repeat Password'
+              isClicked={state.isClicked}
               onChange={(e) =>
                 dispatch({
                   type: "SET_REPEATPASSWORD",

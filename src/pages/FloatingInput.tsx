@@ -7,6 +7,7 @@ interface inputPropsTypes {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   hasError: boolean;
+  isClicked: boolean;
 }
 
 export default function FloatingInput({
@@ -14,11 +15,12 @@ export default function FloatingInput({
   value,
   onChange,
   hasError,
+  isClicked,
 }: inputPropsTypes) {
   const [showPassword, setShowPassword] = useState(false);
   const isRepeatPassword = label.toLowerCase().includes("repeat");
   const isPassword = label.toLowerCase().includes("password");
-
+  const isEmail = label.toLocaleLowerCase().includes("email");
 
   return (
     <motion.div
@@ -49,13 +51,21 @@ export default function FloatingInput({
       >
         {label}
       </label>
-      {hasError &&
-        value.length < 1 &&
-        !isRepeatPassword &&(
-          <p className='absolute text-red-500 text-[16px] top-1/2 right-9 -translate-y-1/2'>
-            Can't be empty!
-          </p>
-        )}
+      {!isRepeatPassword && (
+        <p className='absolute text-red-500 text-[16px] top-1/2 right-9 -translate-y-1/2'>
+          {value.trim().length === 0 && isClicked
+            ? "Can't be empty!"
+            : ""}
+        </p>
+      )}
+      {!isRepeatPassword && (
+        <p className='absolute text-red-500 text-[14px] top-1/2 right-1 -translate-y-1/2'>
+          {isEmail && hasError && isClicked && value.trim().length > 0
+            ? "Invalid email"
+            : ""}
+        </p>
+      )}
+
       {isPassword && (
         <span
           className='absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400'
