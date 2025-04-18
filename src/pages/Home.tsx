@@ -1,8 +1,10 @@
 
+
 export default function Home() {
   return (
     <div>
-        j
+     
+      <div className='bg-[#10141E] h-[100vh]'></div>
     </div>
-  )
+  );
 }

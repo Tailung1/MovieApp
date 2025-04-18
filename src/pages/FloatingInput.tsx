@@ -31,7 +31,7 @@ export default function FloatingInput({
       transition={{ duration: 0.4 }}
     >
       <input
-        className={`w-full text-[20px] pl-2 text-white bg-transparent border-b ${
+        className={`w-full  text-[20px] pl-2 text-white bg-transparent border-b ${
           hasError && value.length < 1
             ? "border-red-500"
             : "border-gray-500"
