@@ -16,7 +16,9 @@ export default function FloatingInput({
   hasError,
 }: inputPropsTypes) {
   const [showPassword, setShowPassword] = useState(false);
+  const isRepeatPassword = label.toLowerCase().includes("repeat");
   const isPassword = label.toLowerCase().includes("password");
+
 
   return (
     <motion.div
@@ -42,16 +44,18 @@ export default function FloatingInput({
         className={`pointer-events-none   absolute left-2  text-[#b4c4db]  transition-all duration-300 ${
           value.length > 0
             ? "bottom-11 text-[14px] text-orange-500"
-            : "bottom-2 text-[20px]"
+            : "bottom-2 text-[18px]"
         }`}
       >
         {label}
       </label>
-      {hasError && value.length < 1 && (
-        <p className='absolute text-red-500 top-1/2 right-10 -translate-y-1/2'>
-          Can't be empty!
-        </p>
-      )}
+      {hasError &&
+        value.length < 1 &&
+        !isRepeatPassword &&(
+          <p className='absolute text-red-500 text-[16px] top-1/2 right-9 -translate-y-1/2'>
+            Can't be empty!
+          </p>
+        )}
       {isPassword && (
         <span
           className='absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400'

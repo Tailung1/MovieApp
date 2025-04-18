@@ -1,35 +1,108 @@
-import { useState } from "react";
 import FloatingInput from "./FloatingInput";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useReducer } from "react";
+
+interface initialStateTypes {
+  email: string;
+  password: string;
+  repeatPassword: string;
+  error: string;
+  emailError: boolean;
+  passwordError: boolean;
+  repeatPasswordError: boolean;
+  allFill: boolean;
+}
+
+const initialState: initialStateTypes = {
+  email: "",
+  password: "",
+  repeatPassword: "",
+  error: "",
+  emailError: false,
+  passwordError: false,
+  repeatPasswordError: false,
+  allFill: false,
+};
+
+type Actions =
+  | { type: "SET_EMAIL"; payload: string }
+  | { type: "SET_PASSWORD"; payload: string }
+  | { type: "SET_REPEATPASSWORD"; payload: string }
+  | { type: "ALL_FILL" }
+  //   | { type: "CHECK_INPUTS" }
+  //   | { type: "CHECK_PASSWORD" }
+  //   | { type: "CHECK_PASSWORDREPEAT" }
+  | { type: "PASSWORDSMATCHES" };
+
+function reducer(state: initialStateTypes, action: Actions) {
+  switch (action.type) {
+    case "SET_EMAIL":
+      return { ...state, email: action.payload };
+    case "SET_PASSWORD":
+      return { ...state, password: action.payload };
+    case "SET_REPEATPASSWORD":
+      return { ...state, repeatPassword: action.payload };
+    case "ALL_FILL":
+      const emailIsFilled = state.email.trim() === "";
+      const passwordIsFilled = state.password.trim() === "";
+      const repeatPasswordIsFilled =
+        state.repeatPassword.trim() === "";
+      return {
+        ...state,
+        emailError: emailIsFilled,
+        passwordError: passwordIsFilled,
+        repeatPasswordError: repeatPasswordIsFilled,
+      };
+
+    case "PASSWORDSMATCHES":
+      const passwordMatches = state.password !== state.repeatPassword;
+      return {
+        ...state,
+        repeatPasswordError: passwordMatches,
+        error: "Passwords do not match.",
+      };
+  }
+}
 
 export default function SignUp() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
-  const [error, setError] = useState<string>("");
-  const [emailError, setEmailError] = useState<boolean>(false);
-  const [passwordError, setPasswordError] = useState<boolean>(false);
-  const [repearPasswordError, setRepearPasswordError] =
-    useState<boolean>(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!email || !password || !repeatPassword) {
-      setError("Please fill out all fields.");
-      return;
+    const emailIsEmpty = state.email.trim() === "";
+    const passwordIsEmpty = state.password.trim() === "";
+    const repeatPasswordIsEmpty = state.repeatPassword.trim() === "";
+
+    const passwordMismatch = state.password !== state.repeatPassword;
+
+    if (
+      emailIsEmpty ||
+      passwordIsEmpty ||
+      repeatPasswordIsEmpty ||
+      passwordMismatch
+    ) {
+      dispatch({
+        type: "ALL_FILL",
+      });
+
+      if (passwordMismatch) {
+        dispatch({ type: "PASSWORDSMATCHES" });
+      }
+
+      return; // 🛑 Stop submit
     }
 
-    if (password !== repeatPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        email: state.email,
+        password: state.password,
+      })
+    );
 
-    localStorage.setItem("user", JSON.stringify({ email, password }));
-
-    setError("");
     navigate("/");
   };
 
@@ -54,26 +127,41 @@ export default function SignUp() {
           <div className='flex flex-col gap-11'>
             <FloatingInput
               label='Email address'
-              value={email}
-              hasError={emailError}
-              onChange={(e) => setEmail(e.target.value)}
+              value={state.email}
+              hasError={state.emailError}
+              onChange={(e) =>
+                dispatch({
+                  type: "SET_EMAIL",
+                  payload: e.target.value,
+                })
+              }
             />
             <FloatingInput
-              value={password}
+              value={state.password}
               label='Password'
-              onChange={(e) => setPassword(e.target.value)}
-              hasError={passwordError}
+              onChange={(e) =>
+                dispatch({
+                  type: "SET_PASSWORD",
+                  payload: e.target.value,
+                })
+              }
+              hasError={state.passwordError}
             />
             <FloatingInput
-              value={repeatPassword}
+              value={state.repeatPassword}
               label='Repeat Password'
-              onChange={(e) => setRepeatPassword(e.target.value)}
-              hasError={repearPasswordError}
+              onChange={(e) =>
+                dispatch({
+                  type: "SET_REPEATPASSWORD",
+                  payload: e.target.value,
+                })
+              }
+              hasError={state.repeatPasswordError}
             />
           </div>
           <div className='flex flex-col relative items-center gap-[24px]'>
             <p className='text-yellow-400 top-[-30px] absolute'>
-              {error}
+              {state.error}
             </p>
             <button
               type='submit'
