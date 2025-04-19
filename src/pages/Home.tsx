@@ -1,29 +1,69 @@
+import { useEffect, useRef } from "react";
 import data from "../movies.json";
 
 export default function Home() {
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    const interval = setInterval(() => {
+      if (!scrollContainer) return;
+
+      const { scrollLeft, clientWidth, scrollWidth } =
+        scrollContainer;
+
+      if (scrollLeft + clientWidth >= scrollWidth) {
+        scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollContainer.scrollBy({ left: 220, behavior: "smooth" }); // Adjusted size
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className='bg-[#10141E] min-h-[100vh]'>
-      <div className='pl-[16px]'>
-        <h2 className='text-white text-[20px]'>Trending</h2>
-        <div>trending movies</div>
+      {/* Trending Movies Section */}
+      <div
+        ref={scrollRef}
+        className='overflow-x-hidden relative scroll-smooth snap-x snap-mandatory ml-4 pr-4' // Added padding-left and right
+      >
+        <div className='flex gap-4 transition-all duration-1000 ease-in-out'>
+          {data.map((movie) => (
+            <div
+              key={movie.id}
+              className='snap-start flex-shrink-0 w-[230px] rounded-md overflow-hidden'
+            >
+              <img
+                src={movie.thumbnail}
+                alt={movie.title}
+                className='w-full h-[120px] object-cover'
+              />
+              <p className='text-white mt-2'>{movie.title}</p>
+            </div>
+          ))}
+        </div>
       </div>
+
+      {/* Recommended for you Section */}
       <div className='px-[16px] flex flex-col mt-[24px]'>
-        <h2 className='text-white pb-[15px]  text-[20px]'>
+        <h2 className='text-white pb-[15px] text-[20px]'>
           Recommended for you
         </h2>
-        <div className='flex flex-wrap gap-[15px] '>
+        <div className='flex flex-wrap gap-[15px]'>
           {data.map(
             (movie) =>
               movie.recommended && (
-                <div key={movie.id} className=' w-[164px]  '>
+                <div key={movie.id} className='w-[164px]'>
                   <div className='flex relative flex-col gap-[10px]'>
                     <img
                       src={movie.thumbnail}
                       alt={movie.title}
-                      className=' h-[110px] rounded-[8px] object-cover'
+                      className='h-[110px] rounded-[8px] object-cover'
                     />
                     <svg
-                      className='absolute top-2 right-2 cursor-pointer  hover:fill-[yellow] hover:stroke-red-600 '
+                      className='absolute top-2 right-2 cursor-pointer hover:fill-teal-500 hover:stroke-blue-700 hover:scale-110 hover:shadow-lg transition-all duration-300 ease-in-out'
                       xmlns='http://www.w3.org/2000/svg'
                       width='32'
                       height='32'
@@ -44,8 +84,8 @@ export default function Home() {
                       />
                     </svg>
 
-                    <div className='flex flex-col '>
-                      <div className='flex gap-[11px] items-center '>
+                    <div className='flex flex-col'>
+                      <div className='flex gap-[11px] items-center'>
                         <span className='text-white text-[11px]'>
                           {movie.year}
                         </span>
