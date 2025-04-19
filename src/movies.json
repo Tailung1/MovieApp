@@ -1,0 +1,157 @@
+[
+  {
+    "id": 1,
+    "title": "The Batman",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg",
+    "year": 2022,
+    "category": "movie",
+    "rating": "PG-13",
+    "isBookmarked": false,
+    "trending": true,
+    "recommended": true
+  },
+  {
+    "id": 2,
+    "title": "Breaking Bad",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+    "year": 2008,
+    "category": "series",
+    "rating": "TV-MA",
+    "isBookmarked": true,
+    "trending": false,
+    "recommended": true
+  },
+  {
+    "id": 3,
+    "title": "Stranger Things",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/x2LSRK2Cm7MZhjluni1msVJ3wDF.jpg",
+    "year": 2016,
+    "category": "series",
+    "rating": "TV-14",
+    "isBookmarked": false,
+    "trending": true,
+    "recommended": true
+  },
+  {
+    "id": 4,
+    "title": "Dune",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+    "year": 2021,
+    "category": "movie",
+    "rating": "PG-13",
+    "isBookmarked": true,
+    "trending": true,
+    "recommended": true
+  },
+  {
+    "id": 5,
+    "title": "Interstellar",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg",
+    "year": 2014,
+    "category": "movie",
+    "rating": "PG-13",
+    "isBookmarked": false,
+    "trending": false,
+    "recommended": false
+  },
+  {
+    "id": 6,
+    "title": "The Office",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/qWnJzyZhyy74gjpSjIXWmuk0ifX.jpg",
+    "year": 2005,
+    "category": "series",
+    "rating": "TV-14",
+    "isBookmarked": true,
+    "trending": false,
+    "recommended": false
+  },
+  {
+    "id": 7,
+    "title": "The Witcher",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/zrPpUlehQaBf8YX2NrVrKK8IEpf.jpg",
+    "year": 2019,
+    "category": "series",
+    "rating": "TV-MA",
+    "isBookmarked": true,
+    "trending": true,
+    "recommended": true
+  },
+  {
+    "id": 8,
+    "title": "Spider-Man: No Way Home",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+    "year": 2021,
+    "category": "movie",
+    "rating": "PG-13",
+    "isBookmarked": true,
+    "trending": true,
+    "recommended": true
+  },
+  {
+    "id": 9,
+    "title": "Friends",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/f496cm9enuEsZkSPzCwnTESEK5s.jpg",
+    "year": 1994,
+    "category": "series",
+    "rating": "TV-PG",
+    "isBookmarked": false,
+    "trending": false,
+    "recommended": true
+  },
+  {
+    "id": 10,
+    "title": "Avatar",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/6EiRUJpuoeQPghrs3YNktfnqOVh.jpg",
+    "year": 2009,
+    "category": "movie",
+    "rating": "PG-13",
+    "isBookmarked": false,
+    "trending": true,
+    "recommended": false
+  },
+  {
+    "id": 11,
+    "title": "Squid Game",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg",
+    "year": 2021,
+    "category": "series",
+    "rating": "TV-MA",
+    "isBookmarked": true,
+    "trending": true,
+    "recommended": true
+  },
+  {
+    "id": 12,
+    "title": "The Mandalorian",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg",
+    "year": 2019,
+    "category": "series",
+    "rating": "TV-PG",
+    "isBookmarked": false,
+    "trending": true,
+    "recommended": false
+  },
+  {
+    "id": 13,
+    "title": "The Matrix Resurrections",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/8c4a8kE7PizaGQQnditMmI1xbRp.jpg",
+    "year": 2021,
+    "category": "movie",
+    "rating": "R",
+    "isBookmarked": true,
+    "trending": true,
+    "recommended": false
+  },
+  {
+    "id": 14,
+    "title": "The Dark Knight",
+    "thumbnail": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    "year": 2008,
+    "category": "movie",
+    "rating": "PG-13",
+    "isBookmarked": false,
+    "trending": false,
+    "recommended": true
+  }
+  
+]

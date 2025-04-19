@@ -5,16 +5,27 @@ import { BookmarkIcon } from "../Icons/Icons";
 
 export default function Header() {
   return (
-    <div className='flex justify-around  gap-[60px]  items-center p-5  bg-[#161D2F] '>
-      <img className='w-[25px]' src='../public/Movie.svg' />
-      <div className='flex gap-5 items-center '>
-        <MicrosoftLogo />
-        <TVIcon />
-        <MenuIcon />
-        <BookmarkIcon />
-      </div>
+    <header className='bg-[#161D2F] px-4 py-5'>
+      <div className='flex justify-between items-center'>
+        <img
+          className='w-[25px] shrink-0'
+          src='../public/Movie.svg'
+          alt='Logo'
+        />
 
-      <img src='../public/personIcon.svg' />
-    </div>
+        <div className='flex gap-4 items-center flex-nowrap overflow-hidden'>
+          <MicrosoftLogo />
+          <TVIcon />
+          <MenuIcon />
+          <BookmarkIcon />
+        </div>
+
+        <img
+          className='w-[24px] h-[24px] shrink-0'
+          src='../public/personIcon.svg'
+          alt='User'
+        />
+      </div>
+    </header>
   );
 }
