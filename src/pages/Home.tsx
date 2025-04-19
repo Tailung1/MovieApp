@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import data from "../movies.json";
 
 export default function Home() {
-  const scrollRef = useRef(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
