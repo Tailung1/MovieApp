@@ -63,15 +63,15 @@ export default function Home() {
       </div>
 
       {/* Recommended for you Section */}
-      <div className='px-[16px] flex flex-col mt-[24px]'>
+      <div className='px-[17px] flex flex-col mt-[24px]'>
         <h2 className='text-white pb-[15px] text-[20px]'>
           Recommended for you
         </h2>
-        <div className='flex flex-wrap gap-[15px]'>
+        <div className='flex  flex-wrap gap-[15px]'>
           {data.map(
             (movie) =>
               movie.recommended && (
-                <div key={movie.id} className='w-[164px]'>
+                <div key={movie.id}  className='w-[130px]'>
                   <div className='flex relative flex-col gap-[10px]'>
                     <img
                       src={movie.thumbnail}
