@@ -2,11 +2,15 @@ import type { NavigateFunction } from "react-router-dom";
 
 type LogoProps = {
   navigate: NavigateFunction;
-  direction:string,
-  setDirection:React.Dispatch<React.SetStateAction<string>>
+  direction: string;
+  setDirection: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export const HomeLogo = ({ navigate,direction,setDirection }: LogoProps) => {
+export const HomeLogo = ({
+  navigate,
+  direction,
+  setDirection,
+}: LogoProps) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -17,7 +21,7 @@ export const HomeLogo = ({ navigate,direction,setDirection }: LogoProps) => {
       }}
       className={`${
         direction === "home" ? "w-8 h-8" : "w-6 h-6"
-      } cursor-pointer transition-all duration-300`}
+      } cursor-pointer transition-all duration-700 ease-in-out`}
     >
       <g transform='translate(4,4)'>
         <path
@@ -29,7 +33,11 @@ export const HomeLogo = ({ navigate,direction,setDirection }: LogoProps) => {
   );
 };
 
-export function MovieIcon({ navigate, direction, setDirection }: LogoProps) {
+export function MovieIcon({
+  navigate,
+  direction,
+  setDirection,
+}: LogoProps) {
   return (
     <svg
       onClick={() => {
@@ -38,7 +46,7 @@ export function MovieIcon({ navigate, direction, setDirection }: LogoProps) {
       }}
       className={`${
         direction === "movie" ? "w-8 h-8" : "w-6 h-6"
-      } cursor-pointer transition-all duration-300-pointer`}
+      } cursor-pointer transition-all duration-700 ease-in-out`}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 24 24'
       strokeWidth={1.5}
@@ -71,7 +79,7 @@ export function SeriesIcon({
       stroke={`${direction === "series" ? "#fff" : "#5A698F"}`}
       className={`${
         direction === "series" ? "w-8 h-8" : "w-6 h-6"
-      } cursor-pointer transition-all duration-300-pointer`}
+      } cursor-pointer transition-all duration-700 ease-in-out`}
     >
       <path
         fill={`${direction === "series" ? "#fff" : "#5A698F"}`}
@@ -100,7 +108,7 @@ export function BookmarkIcon({
       stroke='none'
       className={`${
         direction === "bookMarked" ? "w-8 h-8" : "w-6 h-6"
-      } cursor-pointer transition-all duration-300`}
+      } cursor-pointer transition-all duration-700 ease-in-out`}
     >
       <path
         fill={`${direction === "bookMarked" ? "#fff" : "#5A698F"}`}
