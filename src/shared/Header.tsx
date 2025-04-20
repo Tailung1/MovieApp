@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Header() {
     const navigate=useNavigate()
-   
+    const [direction,setDirection]=useState<string>("home")
   return (
     <header className='bg-[#161D2F] px-4 py-5'>
       <div className='flex justify-between items-center'>
@@ -17,11 +17,27 @@ export default function Header() {
           alt='Logo'
         />
 
-        <div className='flex gap-4 items-center flex-nowrap overflow-hidden'>
-          <HomeLogo navigate={navigate}  />
-          <MovieIcon navigate={navigate} />
-          <SeriesIcon navigate={navigate} />
-          <BookmarkIcon navigate={navigate} />
+        <div className='flex gap-4 h-[40px]  items-center flex-nowrap overflow-hidden'>
+          <HomeLogo
+            navigate={navigate}
+            direction={direction}
+            setDirection={setDirection}
+          />
+          <MovieIcon
+            navigate={navigate}
+            direction={direction}
+            setDirection={setDirection}
+          />
+          <SeriesIcon
+            navigate={navigate}
+            direction={direction}
+            setDirection={setDirection}
+          />
+          <BookmarkIcon
+            navigate={navigate}
+            direction={direction}
+            setDirection={setDirection}
+          />
         </div>
 
         <img
