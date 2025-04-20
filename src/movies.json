@@ -39,7 +39,7 @@
     "year": 2021,
     "category": "movie",
     "rating": "PG-13",
-    "isBookmarked": true,
+    "isBookmarked": false,
     "trending": true,
     "recommended": true
   },
@@ -83,7 +83,7 @@
     "year": 2021,
     "category": "movie",
     "rating": "PG-13",
-    "isBookmarked": true,
+    "isBookmarked": false,
     "trending": true,
     "recommended": true
   },
@@ -116,7 +116,7 @@
     "year": 2021,
     "category": "series",
     "rating": "TV-MA",
-    "isBookmarked": true,
+    "isBookmarked": false,
     "trending": true,
     "recommended": true
   },
@@ -138,7 +138,7 @@
     "year": 2021,
     "category": "movie",
     "rating": "R",
-    "isBookmarked": true,
+    "isBookmarked": false,
     "trending": true,
     "recommended": false
   },

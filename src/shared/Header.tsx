@@ -1,6 +1,6 @@
-import { MicrosoftLogo } from "../Icons/Icons";
-import { TVIcon } from "../Icons/Icons";
-import { MenuIcon } from "../Icons/Icons";
+import { HomeLogo } from "../Icons/Icons";
+import { MovieIcon } from "../Icons/Icons";
+import { SeriesIcon } from "../Icons/Icons";
 import { BookmarkIcon } from "../Icons/Icons";
 
 export default function Header() {
@@ -14,9 +14,9 @@ export default function Header() {
         />
 
         <div className='flex gap-4 items-center flex-nowrap overflow-hidden'>
-          <MicrosoftLogo />
-          <TVIcon />
-          <MenuIcon />
+          <HomeLogo />
+          <MovieIcon />
+          <SeriesIcon />
           <BookmarkIcon />
         </div>
 

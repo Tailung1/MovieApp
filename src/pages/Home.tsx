@@ -24,23 +24,39 @@ export default function Home() {
 
   return (
     <div className='bg-[#10141E] min-h-[100vh]'>
-      {/* Trending Movies Section */}
+      <h2 className='text-white pb-[15px] ml-4 text-[20px]'>
+        Trending
+      </h2>
       <div
         ref={scrollRef}
-        className='overflow-x-hidden relative scroll-smooth snap-x snap-mandatory ml-4 pr-4' // Added padding-left and right
+        className=' ml-4  overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide'
       >
         <div className='flex gap-4 transition-all duration-1000 ease-in-out'>
           {data.map((movie) => (
             <div
               key={movie.id}
-              className='snap-start flex-shrink-0 w-[230px] rounded-md overflow-hidden'
+              className='snap-start  flex-shrink-0 w-[200px] flex flex-col gap-2 rounded-md overflow-hidden'
             >
               <img
                 src={movie.thumbnail}
                 alt={movie.title}
-                className='w-full h-[120px] object-cover'
+                className='w-full h-[140px] object-cover'
               />
-              <p className='text-white mt-2'>{movie.title}</p>
+
+              <div className='flex flex-col'>
+                <div className='flex gap-[11px] items-center'>
+                  <span className='text-white text-[14px]'>
+                    {movie.year}
+                  </span>
+                  <img className='w-1' src='../public/dot.svg' />
+                  <span className='text-white text-[14px]'>
+                    {movie.category}
+                  </span>
+                </div>
+                <p className='text-violet-500 text-[14px]'>
+                  {movie.title}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -97,7 +113,7 @@ export default function Home() {
                           {movie.category}
                         </span>
                       </div>
-                      <p className='text-white text-[14px]'>
+                      <p className='text-violet-500  text-[14px]'>
                         {movie.title}
                       </p>
                     </div>

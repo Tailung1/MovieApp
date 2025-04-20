@@ -5,7 +5,9 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Header from "./shared/Header";
 import Input from "./shared/Input";
-
+import Series from "./pages/series";
+import Movies from "./pages/Movies";
+import BookMarked from "./pages/BookMarked";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +30,9 @@ const router = createBrowserRouter([
     ),
     children: [
       { path: "/home", element: <Home /> },
-
+      { path: "/series", element: <Series /> },
+      { path: "/movies", element: <Movies /> },
+      { path: "/bookMarked", element: <BookMarked /> },
     ],
   },
 ]);

@@ -9,13 +9,15 @@ type State = {
   emailError: boolean;
   passwordError: boolean;
   loginError: boolean;
+  isClicked: boolean;
 };
 
 type Action =
   | { type: "SET_EMAIL"; payload: string }
   | { type: "SET_PASSWORD"; payload: string }
   | { type: "VALIDATE" }
-  | { type: "SET_LOGIN_ERROR" };
+  | { type: "SET_LOGIN_ERROR" }
+  | { type: "IS_CLICKED" };
 
 const initialState: State = {
   email: "",
@@ -23,6 +25,7 @@ const initialState: State = {
   emailError: false,
   passwordError: false,
   loginError: false,
+  isClicked: false,
 };
 
 function reducer(state: State, action: Action) {
@@ -43,6 +46,8 @@ function reducer(state: State, action: Action) {
       };
     case "SET_LOGIN_ERROR":
       return { ...state, loginError: true };
+    case "IS_CLICKED":
+      return { ...state, isClicked: true };
   }
 }
 
@@ -52,7 +57,7 @@ export default function SignUp() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    dispatch({ type: "IS_CLICKED" });
     dispatch({ type: "VALIDATE" });
 
     const storedUser = localStorage.getItem("user");
@@ -92,6 +97,7 @@ export default function SignUp() {
         >
           <div className='flex flex-col gap-11'>
             <FloatingInput
+              isClicked={state.isClicked}
               label='Email adress'
               value={state.email}
               onChange={(e) =>
@@ -103,6 +109,7 @@ export default function SignUp() {
               hasError={state.emailError}
             />
             <FloatingInput
+              isClicked={state.isClicked}
               value={state.password}
               label='Password'
               onChange={(e) =>
