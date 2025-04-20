@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useState } from "react";
+import React, { ReactNode, createContext, useContext, useState } from "react";
 
 interface IsearchMovie {
   searchMovie: string;
@@ -24,3 +24,13 @@ export default function MovieContext({
     </div>
   );
 }
+
+export const useSearchMovie = () => {
+  const context = useContext(movieSearch);
+  if (!context) {
+    throw new Error(
+      "useSearchMovie must be used within a MovieContext"
+    );
+  }
+  return context;
+};
