@@ -5,7 +5,7 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Header from "./shared/Header";
 import Input from "./shared/Input";
-import Series from "./pages/series";
+import Series from "./pages/Series";
 import Movies from "./pages/Movies";
 import BookMarked from "./pages/BookMarked";
 
@@ -37,4 +37,4 @@ const router = createBrowserRouter([
   },
 ]);
 
-export default router
+export default router;
