@@ -1,4 +1,4 @@
-import { useSearchMovie } from "../movieContext";
+import { useSearchMovie } from "../MovieContext";
 
 
 export default function Input() {

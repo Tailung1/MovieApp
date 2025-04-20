@@ -1,7 +1,7 @@
 import "./App.css";
 import router from "./routes";
 import { RouterProvider } from "react-router-dom";
-import MovieContext from "./movieContext";
+import MovieContext from "./MovieContext";
 
 function App() {
   return (

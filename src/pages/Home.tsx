@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import data from "../movies.json";
-import { useSearchMovie } from "../movieContext";
+import { useSearchMovie } from "../MovieContext";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
