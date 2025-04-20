@@ -42,7 +42,8 @@ export default function Header() {
 
         <img
           className='w-[24px] h-[24px] shrink-0'
-          src='../public/personIcon.svg'
+     
+          src='../src/assets/personIcon.svg'
           alt='User'
         />
       </div>
