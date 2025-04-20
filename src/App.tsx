@@ -1,12 +1,9 @@
-
-import './App.css'
-import router from './routes'
-import { RouterProvider } from 'react-router-dom'
-import MovieContext from './movieContext';
+import "./App.css";
+import router from "./routes";
+import { RouterProvider } from "react-router-dom";
+import MovieContext from "./movieContext";
 
 function App() {
-
-
   return (
     <>
       <MovieContext>
@@ -16,4 +13,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
