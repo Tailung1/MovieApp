@@ -4,7 +4,17 @@ import data from "../movies.json";
 
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 
-export default function AnimatedMovies() {
+type TCategory = "recommended" | "series" | "movie";
+type TTitle = "Recommended for you" | "Series" | "Movies";
+
+
+export default function SharedMovies({
+  category,
+  title,
+}: {
+  category: TCategory;
+  title: TTitle;
+}) {
   const { searchMovie } = useSearchMovie();
   const [movieMatches, setMovieMatches] = useState<boolean>(false);
   const [movies, setMovies] = useState(data);
@@ -17,7 +27,9 @@ export default function AnimatedMovies() {
           movie.title.toLowerCase() === searchMovie.toLowerCase()
       );
     } else {
-      filtered = movies.filter((movie) => movie.recommended);
+      filtered = movies.filter(
+        (movie) => movie.category === category.toLowerCase()
+      );
     }
 
     setMovies(filtered);
@@ -25,7 +37,7 @@ export default function AnimatedMovies() {
   }, [searchMovie]);
 
   return (
-    <div>
+    <div className='px-[16px] flex flex-col mt-[24px]'>
       <h2 className='text-white pb-[15px] text-[20px] min-h-[24px]'>
         {searchMovie ? (
           !movieMatches ? (
@@ -34,13 +46,13 @@ export default function AnimatedMovies() {
               animate={{ opacity: 1 }}
               className='text-red-400 italic'
             >
-              no Series Found
+              No matching titles — maybe try something else?
             </motion.span>
           ) : (
-            "Filtered Series"
+            `${title}`
           )
         ) : (
-          "series"
+          `${title}`
         )}
       </h2>
       <div className='flex flex-wrap gap-[15px]'>
@@ -65,7 +77,7 @@ export default function AnimatedMovies() {
                 className='w-[160px] flex relative flex-col gap-[10px]'
               >
                 <img
-                  className='absolute '
+                  className='rounded-[8px] h-[110px]'
                   src={movie.thumbnail}
                   alt={movie.title}
                 />
