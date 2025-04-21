@@ -7,11 +7,20 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function AnimatedMovies() {
   const { searchMovie } = useSearchMovie();
   const [movieMatches, setMovieMatches] = useState<boolean>(false);
-  const [filtered, setFiltered] = useState(data);
+  const [movies, setMovies] = useState(data);
 
   useEffect(() => {
     let filtered = data;
+    if (searchMovie) {
+      filtered = movies.filter(
+        (movie) =>
+          movie.title.toLowerCase() === searchMovie.toLowerCase()
+      );
+    } else {
+      filtered = movies.filter((movie) => movie.recommended);
+    }
 
+    setMovies(filtered);
     setMovieMatches(true);
   }, [searchMovie]);
 
@@ -35,7 +44,7 @@ export default function AnimatedMovies() {
         )}
       </h2>
       <div className='flex flex-wrap gap-[15px]'>
-        <AnimatePresence mode='popLayout'></AnimatePresence>
+        <AnimatePresence mode='popLayout'>{}</AnimatePresence>
       </div>
     </div>
   );
