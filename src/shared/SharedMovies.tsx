@@ -4,7 +4,7 @@ import data from "../movies.json";
 
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 
-type TCategory = "recommended" | "series" | "movie";
+type TCategory = boolean | "series" | "movie";
 type TTitle = "Recommended for you" | "Series" | "Movies";
 
 
@@ -22,14 +22,19 @@ export default function SharedMovies({
   useEffect(() => {
     let filtered = data;
     if (searchMovie) {
-      filtered = movies.filter(
-        (movie) =>
-          movie.title.toLowerCase() === searchMovie.toLowerCase()
+      filtered = movies.filter((movie) =>
+        movie.title.toLowerCase().includes(searchMovie.toLowerCase())
       );
     } else {
-      filtered = movies.filter(
-        (movie) => movie.category === category.toLowerCase()
-      );
+      if(typeof category === "string") {
+        filtered = movies.filter(
+          (movie) => movie.category === category.toLowerCase()
+        );
+      } else {
+         filtered = movies.filter(
+          (movie) => movie.recommended === category
+         )
+      }
     }
 
     setMovies(filtered);

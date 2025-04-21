@@ -70,7 +70,7 @@ export default function Home() {
       {/* Recommended / Filtered Movies Section */}
       <SharedMovies
         title={"Recommended for you"}
-        category={"recommended"}
+        category={true}
       />
     </div>
   );
