@@ -11,11 +11,16 @@ export default function Home() {
 
   // Filter movies based on the search term directly
   useEffect(() => {
-    const filtered = data.filter(
+    let filtered=data;
+      if(searchMovie) {
+       filtered=  data.filter(
       (movie) =>
-        movie.recommended &&
+        
         movie.title.toLowerCase().includes(searchMovie.toLowerCase())
     );
+    } else {
+        filtered=data.filter((movie)=>movie.recommended)
+    }
     setFilteredMovies(filtered);
     setNoMatch(filtered.length === 0);
   }, [searchMovie]);
