@@ -55,7 +55,7 @@ export default function SharedMovies({
           ) : `${title}` === "Recommended for you" ? (
             "Filtred results"
           ) : (
-            "Recommended for you"
+            ` Filtred ${title}`
           )
         ) : (
           `${title}`
