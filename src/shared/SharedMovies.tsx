@@ -7,7 +7,6 @@ import { motion, AnimatePresence, easeInOut } from "framer-motion";
 type TCategory = boolean | "series" | "movie";
 type TTitle = "Recommended for you" | "Series" | "Movies";
 
-
 export default function SharedMovies({
   category,
   title,
@@ -22,23 +21,23 @@ export default function SharedMovies({
   useEffect(() => {
     let filtered = data;
     if (searchMovie) {
-      filtered = movies.filter((movie) =>
+      filtered = data.filter((movie) =>
         movie.title.toLowerCase().includes(searchMovie.toLowerCase())
       );
     } else {
-      if(typeof category === "string") {
-        filtered = movies.filter(
-          (movie) => movie.category === category.toLowerCase()
+      if (typeof category === "boolean") {
+        filtered = data.filter(
+          (movie) => movie.recommended === category
         );
       } else {
-         filtered = movies.filter(
-          (movie) => movie.recommended === category
-         )
+        filtered = data.filter(
+          (movie) => movie.category === category.toLowerCase()
+        );
       }
     }
 
     setMovies(filtered);
-    setMovieMatches(true);
+    setMovieMatches(filtered.length > 0);
   }, [searchMovie]);
 
   return (
@@ -53,8 +52,10 @@ export default function SharedMovies({
             >
               No matching titles — maybe try something else?
             </motion.span>
+          ) : `${title}` === "Recommended for you" ? (
+            "Filtred results"
           ) : (
-            `${title}`
+            "Recommended for you"
           )
         ) : (
           `${title}`
