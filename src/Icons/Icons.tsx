@@ -6,7 +6,7 @@ type LogoProps = {
   direction: string;
   setDirection: React.Dispatch<React.SetStateAction<string>>;
   setInputPlaceholder: React.Dispatch<React.SetStateAction<string>>;
-  setSearchMovie:React.Dispatch<React.SetStateAction<string>>
+  setSearchMovie: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const HomeLogo = ({
@@ -24,7 +24,7 @@ export const HomeLogo = ({
         navigate("/home");
         setDirection("home");
         setInputPlaceholder("Search for movies or TV series");
-        setSearchMovie("")
+        setSearchMovie("");
       }}
       className={`${
         direction === "home" ? "w-8 h-8" : "w-6 h-6"
@@ -45,7 +45,7 @@ export function MovieIcon({
   direction,
   setDirection,
   setInputPlaceholder,
-  setSearchMovie
+  setSearchMovie,
 }: LogoProps) {
   return (
     <svg
@@ -111,7 +111,7 @@ export function BookmarkIcon({
   direction,
   setDirection,
   setInputPlaceholder,
-  setSearchMovie 
+  setSearchMovie,
 }: LogoProps) {
   return (
     <svg
@@ -119,7 +119,7 @@ export function BookmarkIcon({
         navigate("/bookMarked");
         setDirection("bookMarked");
         setInputPlaceholder("Search for bookmarked shows");
-        setSearchMovie("")
+        setSearchMovie("");
       }}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 24 24'
