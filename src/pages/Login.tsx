@@ -78,7 +78,7 @@ export default function SignUp() {
   };
 
   return (
-    <div className='flex justify-center items-center bg-[#10141E] h-[100vh]'>
+    <div className='flex justify-center items-center px-[10px] bg-[#10141E] h-[100vh]'>
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
