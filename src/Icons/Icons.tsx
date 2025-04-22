@@ -83,11 +83,10 @@ export function SeriesIcon({
   return (
     <svg
       onClick={() => {
-        setSearchMovie("");
         navigate("/series");
         setDirection("series");
         setInputPlaceholder("Search for TV series");
-        
+        setSearchMovie("");
       }}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 24 24'
@@ -117,11 +116,10 @@ export function BookmarkIcon({
   return (
     <svg
       onClick={() => {
-        setSearchMovie("");
         navigate("/bookMarked");
         setDirection("bookMarked");
         setInputPlaceholder("Search for bookmarked shows");
-        
+        setSearchMovie("")
       }}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 24 24'

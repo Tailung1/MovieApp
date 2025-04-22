@@ -17,7 +17,7 @@
     "year": 2008,
     "category": "series",
     "rating": "TV-MA",
-    "isBookmarked": true,
+    "isBookmarked": false,
     "trending": false,
     "recommended": true
   },
@@ -61,7 +61,7 @@
     "year": 2005,
     "category": "series",
     "rating": "TV-14",
-    "isBookmarked": true,
+    "isBookmarked": false,
     "trending": false,
     "recommended": false
   },
@@ -72,7 +72,7 @@
     "year": 2019,
     "category": "series",
     "rating": "TV-MA",
-    "isBookmarked": true,
+    "isBookmarked": false,
     "trending": true,
     "recommended": true
   },
