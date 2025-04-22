@@ -8,11 +8,15 @@ import React, {
 interface IsearchMovie {
   searchMovie: string;
   setSearchMovie: React.Dispatch<React.SetStateAction<string>>;
+  inputPlaceHolder: string;
+  setInputPlaceholder: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const movieSearch = createContext<IsearchMovie>({
   searchMovie: "",
   setSearchMovie: () => {},
+  inputPlaceHolder: "",
+  setInputPlaceholder: () => {},
 });
 
 export default function MovieContext({
@@ -21,9 +25,19 @@ export default function MovieContext({
   children: ReactNode;
 }) {
   const [searchMovie, setSearchMovie] = useState<string>("");
+  const [inputPlaceHolder, setInputPlaceholder] = useState<string>(
+    "Search for movies or TV series"
+  );
   return (
     <div>
-      <movieSearch.Provider value={{ searchMovie, setSearchMovie }}>
+      <movieSearch.Provider
+        value={{
+          searchMovie,
+          setSearchMovie,
+          inputPlaceHolder,
+          setInputPlaceholder,
+        }}
+      >
         {children}
       </movieSearch.Provider>
     </div>

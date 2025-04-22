@@ -4,12 +4,14 @@ type LogoProps = {
   navigate: NavigateFunction;
   direction: string;
   setDirection: React.Dispatch<React.SetStateAction<string>>;
+  setInputPlaceholder: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const HomeLogo = ({
   navigate,
   direction,
   setDirection,
+  setInputPlaceholder,
 }: LogoProps) => {
   return (
     <svg
@@ -18,6 +20,7 @@ export const HomeLogo = ({
       onClick={() => {
         navigate("/home");
         setDirection("home");
+        setInputPlaceholder("Search for movies or TV series");
       }}
       className={`${
         direction === "home" ? "w-8 h-8" : "w-6 h-6"
@@ -37,12 +40,14 @@ export function MovieIcon({
   navigate,
   direction,
   setDirection,
+  setInputPlaceholder,
 }: LogoProps) {
   return (
     <svg
       onClick={() => {
         navigate("/movies");
         setDirection("movie");
+        setInputPlaceholder("Search for movies");
       }}
       className={`${
         direction === "movie" ? "w-8 h-8" : "w-6 h-6"
@@ -66,12 +71,14 @@ export function SeriesIcon({
   navigate,
   direction,
   setDirection,
+  setInputPlaceholder,
 }: LogoProps) {
   return (
     <svg
       onClick={() => {
         navigate("/series");
         setDirection("series");
+        setInputPlaceholder("Search for TV series");
       }}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 24 24'
@@ -95,12 +102,14 @@ export function BookmarkIcon({
   navigate,
   direction,
   setDirection,
+  setInputPlaceholder,
 }: LogoProps) {
   return (
     <svg
       onClick={() => {
         navigate("/bookMarked");
         setDirection("bookMarked");
+        setInputPlaceholder("Search for bookmarked shows");
       }}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 24 24'

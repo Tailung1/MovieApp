@@ -4,10 +4,12 @@ import { MovieIcon } from "../Icons/Icons";
 import { SeriesIcon } from "../Icons/Icons";
 import { BookmarkIcon } from "../Icons/Icons";
 import { useNavigate } from "react-router-dom";
+import { useSearchMovie } from "../MovieContext";
 
 export default function Header() {
-    const navigate=useNavigate()
-    const [direction,setDirection]=useState<string>("home")
+  const navigate = useNavigate();
+  const [direction, setDirection] = useState<string>("home");
+  const { setInputPlaceholder } = useSearchMovie();
   return (
     <header className='bg-[#161D2F] px-4 py-5'>
       <div className='flex justify-between items-center'>
@@ -22,27 +24,30 @@ export default function Header() {
             navigate={navigate}
             direction={direction}
             setDirection={setDirection}
+            setInputPlaceholder={setInputPlaceholder}
           />
           <MovieIcon
             navigate={navigate}
             direction={direction}
             setDirection={setDirection}
+            setInputPlaceholder={setInputPlaceholder}
           />
           <SeriesIcon
             navigate={navigate}
             direction={direction}
             setDirection={setDirection}
+            setInputPlaceholder={setInputPlaceholder}
           />
           <BookmarkIcon
             navigate={navigate}
             direction={direction}
             setDirection={setDirection}
+            setInputPlaceholder={setInputPlaceholder}
           />
         </div>
 
         <img
           className='w-[24px] h-[24px] shrink-0'
-     
           src='../src/assets/personIcon.svg'
           alt='User'
         />
