@@ -20,7 +20,14 @@ export default function SharedMovies({
 
   useEffect(() => {
     let filtered = data;
-    if (searchMovie) {
+    if (searchMovie && typeof category === "boolean") {
+      filtered = data.filter(
+        (movie) =>
+          movie.title
+            .toLowerCase()
+            .includes(searchMovie.toLowerCase()) && movie.recommended
+      );
+    } else if (searchMovie) {
       filtered = data.filter((movie) =>
         movie.title.toLowerCase().includes(searchMovie.toLowerCase())
       );
@@ -53,7 +60,11 @@ export default function SharedMovies({
               No matching titles — maybe try something else?
             </motion.span>
           ) : `${title}` === "Recommended for you" ? (
-            "Filtred results"
+            <>
+              Filtered{" "}
+              <span className='text-orange-600'>Recommended</span>{" "}
+              Movies/Series
+            </>
           ) : (
             ` Filtred ${title}`
           )
