@@ -14,24 +14,51 @@ export default function SharedMovies({
   category: TCategory;
   title: TTitle;
 }) {
-  const { searchMovie } = useSearchMovie();
+  const { searchMovie, inputPlaceHolder } = useSearchMovie();
   const [movieMatches, setMovieMatches] = useState<boolean>(false);
   const [movies, setMovies] = useState(data);
 
   useEffect(() => {
     let filtered = data;
-    if (searchMovie && typeof category === "boolean") {
-      filtered = data.filter(
-        (movie) =>
+
+    if (searchMovie) {
+      if (typeof category === "boolean") {
+        // Searching on "Recommended for you"
+        filtered = data.filter(
+          (movie) =>
+            movie.title
+              .toLowerCase()
+              .includes(searchMovie.toLowerCase()) &&
+            movie.recommended === category
+        );
+      } else if (inputPlaceHolder === "Search for movies") {
+        // Searching on Movies page
+        filtered = data.filter(
+          (movie) =>
+            movie.title
+              .toLowerCase()
+              .includes(searchMovie.toLowerCase()) &&
+            movie.category === "movie"
+        );
+      } else if (inputPlaceHolder === "Search for TV series") {
+        // Searching on Series page
+        filtered = data.filter(
+          (movie) =>
+            movie.title
+              .toLowerCase()
+              .includes(searchMovie.toLowerCase()) &&
+            movie.category === "series"
+        );
+      } else {
+        // General search
+        filtered = data.filter((movie) =>
           movie.title
             .toLowerCase()
-            .includes(searchMovie.toLowerCase()) && movie.recommended
-      );
-    } else if (searchMovie) {
-      filtered = data.filter((movie) =>
-        movie.title.toLowerCase().includes(searchMovie.toLowerCase())
-      );
+            .includes(searchMovie.toLowerCase())
+        );
+      }
     } else {
+      // No search
       if (typeof category === "boolean") {
         filtered = data.filter(
           (movie) => movie.recommended === category
@@ -45,7 +72,7 @@ export default function SharedMovies({
 
     setMovies(filtered);
     setMovieMatches(filtered.length > 0);
-  }, [searchMovie]);
+  }, [searchMovie, category, inputPlaceHolder]);
 
   return (
     <div className='px-[16px] flex flex-col mt-[24px]'>
