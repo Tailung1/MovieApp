@@ -1,3 +1,4 @@
+import React from "react";
 import type { NavigateFunction } from "react-router-dom";
 
 type LogoProps = {
@@ -5,6 +6,7 @@ type LogoProps = {
   direction: string;
   setDirection: React.Dispatch<React.SetStateAction<string>>;
   setInputPlaceholder: React.Dispatch<React.SetStateAction<string>>;
+  setSearchMovie:React.Dispatch<React.SetStateAction<string>>
 };
 
 export const HomeLogo = ({
@@ -12,6 +14,7 @@ export const HomeLogo = ({
   direction,
   setDirection,
   setInputPlaceholder,
+  setSearchMovie,
 }: LogoProps) => {
   return (
     <svg
@@ -21,6 +24,7 @@ export const HomeLogo = ({
         navigate("/home");
         setDirection("home");
         setInputPlaceholder("Search for movies or TV series");
+        setSearchMovie("")
       }}
       className={`${
         direction === "home" ? "w-8 h-8" : "w-6 h-6"
@@ -41,6 +45,7 @@ export function MovieIcon({
   direction,
   setDirection,
   setInputPlaceholder,
+  setSearchMovie
 }: LogoProps) {
   return (
     <svg
@@ -48,6 +53,7 @@ export function MovieIcon({
         navigate("/movies");
         setDirection("movie");
         setInputPlaceholder("Search for movies");
+        setSearchMovie("");
       }}
       className={`${
         direction === "movie" ? "w-8 h-8" : "w-6 h-6"
@@ -72,13 +78,16 @@ export function SeriesIcon({
   direction,
   setDirection,
   setInputPlaceholder,
+  setSearchMovie,
 }: LogoProps) {
   return (
     <svg
       onClick={() => {
+        setSearchMovie("");
         navigate("/series");
         setDirection("series");
         setInputPlaceholder("Search for TV series");
+        
       }}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 24 24'
@@ -103,13 +112,16 @@ export function BookmarkIcon({
   direction,
   setDirection,
   setInputPlaceholder,
+  setSearchMovie 
 }: LogoProps) {
   return (
     <svg
       onClick={() => {
+        setSearchMovie("");
         navigate("/bookMarked");
         setDirection("bookMarked");
         setInputPlaceholder("Search for bookmarked shows");
+        
       }}
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 24 24'
