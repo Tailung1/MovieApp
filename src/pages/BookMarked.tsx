@@ -11,6 +11,7 @@ const Bookmarked = () => {
     (movie) => movie.isBookmarked && movie.category === "series"
   );
 
+
   return (
     <div
       className={`text-white bg-[#10141E] flex flex-col gap-[30px] ${
