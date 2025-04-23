@@ -11,9 +11,14 @@ const Bookmarked = () => {
     (movie) => movie.isBookmarked && movie.category === "series"
   );
 
-
   return (
-    <div className='text-white bg-[#10141E] flex flex-col gap-[30px] m-h-[100vh]'>
+    <div
+      className={`text-white bg-[#10141E] flex flex-col gap-[30px] ${
+        bookmarkedMovies.length > 0 || bookmarkeSeries.length > 0
+          ? "m-h-[100vh]"
+          : "h-[100vh]"
+      }  `}
+    >
       <div>
         {bookmarkedMovies.length > 0 ? (
           <h1 className='text-3xl font-semibold p-4'>

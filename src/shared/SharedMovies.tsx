@@ -17,7 +17,7 @@ export default function SharedMovies({
   const { searchMovie, inputPlaceHolder, toggleBookmark } =
     useSearchMovie();
   const [movieMatches, setMovieMatches] = useState<boolean>(false);
-  const [movies, setMovies] = useState(data);
+  const [moviesToDisplay, setMovieToDisplay] = useState(data);
 
   useEffect(() => {
     let filtered = data;
@@ -71,7 +71,7 @@ export default function SharedMovies({
       }
     }
 
-    setMovies(filtered);
+    setMovieToDisplay(filtered);
     setMovieMatches(filtered.length > 0);
   }, [searchMovie, category, inputPlaceHolder]);
 
@@ -111,7 +111,7 @@ export default function SharedMovies({
           </div>
         ) : (
           <AnimatePresence mode='popLayout'>
-            {movies.map((movie) => (
+            {moviesToDisplay.map((movie) => (
               <motion.div
                 layout
                 key={movie.id}
