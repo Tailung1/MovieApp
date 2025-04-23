@@ -4,7 +4,7 @@ import data from "../movies.json";
 
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 
-type TCategory = boolean | "series" | "movie";
+type TCategory ="series" | "movie";
 type TTitle = "Recommended for you" | "Series" | "Movies";
 
 export default function SharedMovies({
