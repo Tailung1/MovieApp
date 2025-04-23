@@ -14,7 +14,8 @@ export default function SharedMovies({
   category: TCategory;
   title: TTitle;
 }) {
-  const { searchMovie, inputPlaceHolder,toggleBookmark } = useSearchMovie();
+  const { searchMovie, inputPlaceHolder, toggleBookmark } =
+    useSearchMovie();
   const [movieMatches, setMovieMatches] = useState<boolean>(false);
   const [movies, setMovies] = useState(data);
 
@@ -126,7 +127,7 @@ export default function SharedMovies({
                   alt={movie.title}
                 />
                 <svg
-                onClick={()=>toggleBookmark(movie.id)}
+                  onClick={() => toggleBookmark(movie.id)}
                   className='absolute top-2 right-2 cursor-pointer hover:fill-teal-500 hover:stroke-blue-700 hover:scale-110 hover:shadow-lg transition-all duration-300 ease-in-out'
                   xmlns='http://www.w3.org/2000/svg'
                   width='32'

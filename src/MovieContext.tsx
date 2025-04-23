@@ -14,7 +14,7 @@ interface IsearchMovie {
   setInputPlaceholder: React.Dispatch<React.SetStateAction<string>>;
   movies: TMovies;
   setMovies: React.Dispatch<React.SetStateAction<TMovies>>;
-  toggleBookmark:(id:number) =>void
+  toggleBookmark: (id: number) => void;
 }
 
 export interface IMovie {
@@ -38,7 +38,7 @@ const movieSearch = createContext<IsearchMovie>({
   setInputPlaceholder: () => {},
   movies: [],
   setMovies: () => {},
-  toggleBookmark:()=>{}
+  toggleBookmark: () => {},
 });
 
 export default function MovieContext({
@@ -67,7 +67,7 @@ export default function MovieContext({
           setInputPlaceholder,
           movies,
           setMovies,
-          toggleBookmark
+          toggleBookmark,
         }}
       >
         {children}
