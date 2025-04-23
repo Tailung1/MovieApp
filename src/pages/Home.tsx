@@ -23,7 +23,7 @@ export default function Home() {
       } else {
         scrollContainer.scrollBy({ left: 220, behavior: "smooth" });
       }
-    }, 3000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);

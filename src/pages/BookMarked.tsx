@@ -2,15 +2,22 @@ import { useSearchMovie } from "../MovieContext";
 import { IMovie } from "../MovieContext";
 
 const Bookmarked = () => {
-  const { movies, toggleBookmark } = useSearchMovie();
+  const { movies, toggleBookmark, searchMovie } = useSearchMovie();
 
   const bookmarkedMovies = movies.filter(
-    (movie) => movie.isBookmarked && movie.category === "movie"
+    (movie) =>
+      movie.isBookmarked &&
+      movie.category === "movie" &&
+      (!searchMovie ||
+        movie.title.toLowerCase().includes(searchMovie.toLowerCase()))
   );
   const bookmarkeSeries = movies.filter(
-    (movie) => movie.isBookmarked && movie.category === "series"
+    (movie) =>
+      movie.isBookmarked &&
+      movie.category === "series" &&
+      (!searchMovie ||
+        movie.title.toLowerCase().includes(searchMovie.toLowerCase()))
   );
-
 
   return (
     <div
