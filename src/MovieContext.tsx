@@ -29,7 +29,7 @@ export interface IMovie {
   recommended: boolean;
 }
 
-type TMovies = IMovie[];
+export type TMovies = IMovie[];
 
 const movieSearch = createContext<IsearchMovie>({
   searchMovie: "",
