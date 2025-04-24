@@ -137,7 +137,6 @@ export default function SharedMovies({
                     className='w-full h-full flex items-center justify-center overflow-hidden'
                     style={{
                       clipPath: "inset(35px round 15px)",
-                      borderRadius: "18px",
                     }}
                   >
                     {/* Mirrored IMG instead of background */}
