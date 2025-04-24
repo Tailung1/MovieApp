@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchMovie } from "../MovieContext";
 import data from "../movies.json";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
+import { div } from "framer-motion/client";
 
 type TCategory = boolean | "series" | "movie";
 type TTitle = "Recommended for you" | "Series" | "Movies";
@@ -107,64 +108,78 @@ export default function SharedMovies({
         ) : (
           <AnimatePresence mode='popLayout'>
             {moviesToDisplay.map((movie) => (
-              <motion.div
-                layout
-                key={movie.id}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -20, scale: 0.9 }}
-                transition={{ duration: 0.35, ease: easeInOut }}
-                className='w-[164px] h-[110px] rounded-[8px] overflow-hidden cursor-pointer flex flex-col gap-[10px] relative group'
-              >
-                {/* Base Image */}
-                <img
-                  src={movie.thumbnail}
-                  alt={movie.title}
-                  className='w-full h-full ' // no object-cover
-                />
+              <div key={movie.id} className='flex flex-col'>
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -20, scale: 0.9 }}
+                  transition={{ duration: 0.35, ease: easeInOut }}
+                  className='w-[164px] h-[110px] rounded-[8px] overflow-hidden cursor-pointer relative group'
+                >
+                  {/* Base Image */}
+                  <img
+                    src={movie.thumbnail}
+                    alt={movie.title}
+                    className='w-full h-full'
+                  />
 
-                {/* Dark Overlay */}
-                <div
-                  className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity'
-                  style={{
-                    backgroundColor: "rgba(0, 0, 0, 0.4)",
-                  }}
-                />
-
-                {/* Mirror Effect */}
-                <div className='absolute inset-0 hidden group-hover:flex items-center justify-center pointer-events-none'>
+                  {/* Dark Overlay */}
                   <div
-                    className='w-full h-full flex items-center justify-center overflow-hidden'
-                    style={{
-                      clipPath: "inset(35px round 15px)",
-                    }}
-                  >
-                    {/* Mirrored IMG instead of background */}
-                    <img
-                      src={movie.thumbnail}
-                      alt={movie.title}
-                      className='w-full h-full ' // identical to main image
-                    />
-                    <div className='absolute flex items-center justify-center gap-[8px] text-white z-10 '>
-                      <svg
-                        className='w-6'
-                        xmlns='http://www.w3.org/2000/svg'
-                        width='30'
-                        height='30'
-                        viewBox='0 0 30 30'
-                        fill='white'
-                      >
-                        <path
-                          fillRule='evenodd'
-                          clipRule='evenodd'
-                          d='M0 15C0 6.7125 6.7125 0 15 0C23.2875 0 30 6.7125 30 15C30 23.2875 23.2875 30 15 30C6.7125 30 0 23.2875 0 15ZM21 14.5L12 8V21L21 14.5Z'
-                        />
-                      </svg>
-                      <span className='text-[20px]'>Play</span>
+                    className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity'
+                    style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+                  />
+
+                  {/* Mirror Effect */}
+                  <div className='absolute inset-0 hidden group-hover:flex items-center justify-center pointer-events-none'>
+                    <div
+                      className='w-full h-full flex items-center justify-center overflow-hidden'
+                      style={{
+                        clipPath: "inset(35px 30px round 15px)",
+                      }}
+                    >
+                      <img
+                        src={movie.thumbnail}
+                        alt={movie.title}
+                        className='w-full h-full'
+                      />
+                      <div className='absolute flex items-center justify-center gap-[8px] text-white z-10'>
+                        <svg
+                          className='w-6 transition-colors'
+                          xmlns='http://www.w3.org/2000/svg'
+                          viewBox='0 0 30 30'
+                          fill='red'
+                        >
+                          <path
+                            fillRule='evenodd'
+                            clipRule='evenodd'
+                            d='M0 15C0 6.7125 6.7125 0 15 0C23.2875 0 30 6.7125 30 15C30 23.2875 23.2875 30 15 30C6.7125 30 0 23.2875 0 15ZM21 14.5L12 8V21L21 14.5Z'
+                          />
+                        </svg>
+                        <span className='text-[20px] text-red-600'>
+                          Play
+                        </span>
+                      </div>
                     </div>
                   </div>
+                </motion.div>
+
+                {/* Title + Year below */}
+                <div className='mt-1 text-white text-[15px] flex flex-col gap-[5px]'>
+                  <div className='flex items-center gap-[10px]'>
+                    <p className='font-medium leading-none'>
+                      {movie.year}
+                    </p>
+                    <img
+                      className='w-1 h-1'
+                      src='../public/dot.svg'
+                      alt='dot icon'
+                    />
+                    <p>{movie.category}</p>
+                  </div>
+                  <p className='text-violet-600'>{movie.title}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </AnimatePresence>
         )}
