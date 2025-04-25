@@ -137,6 +137,11 @@ export default function SharedMovies({
                         clipPath: "inset(36px 36px round 15px)", //
                       }}
                     >
+                      <img
+                        src={movie.thumbnail}
+                        alt={movie.title}
+                        className='w-full h-full ' // second img
+                      />
                       {/* Overlay with opacity background */}
                       <div className='absolute w-full h-full    flex items-center justify-center gap-[8px] text-white z-10 bg-white/25 '>
                         <svg
