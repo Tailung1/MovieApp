@@ -172,7 +172,7 @@ export default function SharedMovies({
                       width='32'
                       height='32'
                       viewBox='0 0 32 32'
-                      fill='none'
+                      fill={movie.isBookmarked?"white":"none"}
                     >
                       <circle
                         opacity='0.500647'
