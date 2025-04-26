@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IMovie, useSearchMovie } from "../MovieContext";
+import { useSearchMovie } from "../MovieContext";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 
 type TCategory = boolean | "series" | "movie";
