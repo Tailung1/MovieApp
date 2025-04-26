@@ -8,8 +8,9 @@ import { useSearchMovie } from "../MovieContext";
 
 export default function Header() {
   const navigate = useNavigate();
-  const [direction, setDirection] = useState<string>("home");
-  const { setInputPlaceholder,setSearchMovie } = useSearchMovie();
+ 
+  const { setInputPlaceholder, setSearchMovie, setDirection,direction } =
+    useSearchMovie();
   return (
     <header className='bg-[#161D2F] px-4 py-5'>
       <div className='flex justify-between items-center'>

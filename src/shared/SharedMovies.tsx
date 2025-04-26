@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchMovie } from "../MovieContext";
-import data from "../movies.json";
+import { IMovie, useSearchMovie } from "../MovieContext";
 import { motion, AnimatePresence, easeInOut } from "framer-motion";
 
 type TCategory = boolean | "series" | "movie";
@@ -13,61 +12,56 @@ export default function SharedMovies({
   category: TCategory;
   title: TTitle;
 }) {
-  const { searchMovie, inputPlaceHolder, toggleBookmark } =
-    useSearchMovie();
+  const {
+    searchMovie,
+    inputPlaceHolder,
+    toggleBookmark,
+    movies,
+    originalMovies,
+    setMovies,
+    direction,
+  } = useSearchMovie();
   const [movieMatches, setMovieMatches] = useState(false);
-  const [moviesToDisplay, setMovieToDisplay] = useState(data);
 
   useEffect(() => {
-    let filtered = data;
+    let filtered = originalMovies;
 
-    if (searchMovie) {
-      if (typeof category === "boolean") {
-        filtered = data.filter(
-          (movie) =>
-            movie.title
-              .toLowerCase()
-              .includes(searchMovie.toLowerCase()) &&
-            movie.recommended === category
-        );
-      } else if (inputPlaceHolder === "Search for movies") {
-        filtered = data.filter(
-          (movie) =>
-            movie.title
-              .toLowerCase()
-              .includes(searchMovie.toLowerCase()) &&
-            movie.category === "movie"
-        );
-      } else if (inputPlaceHolder === "Search for TV series") {
-        filtered = data.filter(
-          (movie) =>
-            movie.title
-              .toLowerCase()
-              .includes(searchMovie.toLowerCase()) &&
-            movie.category === "series"
-        );
-      } else {
-        filtered = data.filter((movie) =>
-          movie.title
-            .toLowerCase()
-            .includes(searchMovie.toLowerCase())
-        );
-      }
-    } else {
-      if (typeof category === "boolean") {
-        filtered = data.filter(
-          (movie) => movie.recommended === category
-        );
-      } else {
-        filtered = data.filter(
-          (movie) => movie.category === category.toLowerCase()
-        );
-      }
+    if (direction === "home") {
+      // all movies
+      filtered = originalMovies;
+    } else if (direction === "movie") {
+      filtered = originalMovies.filter(
+        (movie) => movie.category === "movie"
+      );
+    } else if (direction === "series") {
+      filtered = originalMovies.filter(
+        (movie) => movie.category === "series"
+      );
+    } else if (direction === "bookMarked") {
+      filtered = originalMovies.filter((movie) => movie.isBookmarked);
     }
 
-    setMovieToDisplay(filtered);
+    if (searchMovie) {
+      filtered = filtered.filter((movie) =>
+        movie.title.toLowerCase().includes(searchMovie.toLowerCase())
+      );
+    }
+
+    if (typeof category === "boolean") {
+      filtered = filtered.filter(
+        (movie) => movie.recommended === category
+      );
+    }
+
+    setMovies(filtered);
     setMovieMatches(filtered.length > 0);
-  }, [searchMovie, category, inputPlaceHolder]);
+  }, [
+    searchMovie,
+    category,
+    inputPlaceHolder,
+    direction,
+    originalMovies,
+  ]);
 
   return (
     <div className='px-[16px] flex flex-col mt-[24px]'>
@@ -88,7 +82,7 @@ export default function SharedMovies({
               Movies/Series
             </>
           ) : (
-            `Filtred ${title}`
+            `Filtered ${title}`
           )
         ) : (
           `${title}`
@@ -106,7 +100,7 @@ export default function SharedMovies({
           </div>
         ) : (
           <AnimatePresence mode='popLayout'>
-            {moviesToDisplay.map((movie) => (
+            {movies.map((movie) => (
               <div key={movie.id} className='flex flex-col'>
                 <motion.div
                   layout
@@ -116,63 +110,27 @@ export default function SharedMovies({
                   transition={{ duration: 0.35, ease: easeInOut }}
                   className='w-[164px] h-[110px] rounded-[8px] overflow-hidden cursor-pointer relative group'
                 >
-                  {/* Base Image */}
                   <img
                     src={movie.thumbnail}
                     alt={movie.title}
-                    className='w-full h-full ' // first img
+                    className='w-full h-full'
                   />
 
-                  {/* Dark Overlay */}
                   <div
                     className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity'
                     style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
                   />
 
-                  {/* Mirror Effect */}
-                  <div className='absolute inset-0 hidden   group-hover:flex items-center justify-center pointer-events-none'>
-                    <div
-                      className='w-full h-full flex  items-center justify-center '
-                      style={{
-                        clipPath: "inset(36px 36px round 15px)", //
-                      }}
-                    >
-                      <img
-                        src={movie.thumbnail}
-                        alt={movie.title}
-                        className='w-full h-full ' // second img
-                      />
-                      {/* Overlay with opacity background */}
-                      <div className='absolute w-full h-full    flex items-center justify-center gap-[8px] text-white z-10 bg-white/25 '>
-                        <svg
-                          className='w-6 transition-colors'
-                          xmlns='http://www.w3.org/2000/svg'
-                          viewBox='0 0 30 30'
-                          fill='red'
-                        >
-                          <path
-                            fillRule='evenodd'
-                            clipRule='evenodd'
-                            d='M0 15C0 6.7125 6.7125 0 15 0C23.2875 0 30 6.7125 30 15C30 23.2875 23.2875 30 15 30C6.7125 30 0 23.2875 0 15ZM21 14.5L12 8V21L21 14.5Z'
-                          />
-                        </svg>
-                        <span className='text-[20px] text-red-600'>
-                          Play
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
                   <div
                     onClick={() => toggleBookmark(movie.id)}
-                    className='group/bookmark absolute top-2 right-2 z-20'
+                    className='group/bookmark absolute top-2 right-2 z-20 cursor-pointer'
                   >
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       width='32'
                       height='32'
                       viewBox='0 0 32 32'
-                      fill={movie.isBookmarked?"white":"none"}
+                      fill='none'
                     >
                       <circle
                         opacity='0.500647'
@@ -180,29 +138,25 @@ export default function SharedMovies({
                         cy='16'
                         r='16'
                         fill='#10141E'
-                        className='group-hover/bookmark:fill-[#fffefc]'
+                        className='group-hover/bookmark:fill-white'
                       />
                       <path
                         d='M11.0576 9.75H20.6094C20.628 9.75 20.6454 9.7514 20.6621 9.75488L20.7109 9.77148L20.7217 9.77539L20.7314 9.7793C20.7986 9.80616 20.8383 9.84044 20.8701 9.88672C20.9028 9.93431 20.917 9.97775 20.917 10.0361V21.9639C20.917 22.0222 20.9028 22.0657 20.8701 22.1133C20.8383 22.1596 20.7986 22.1938 20.7314 22.2207L20.7236 22.2236L20.7158 22.2275C20.7109 22.2296 20.6807 22.2412 20.6094 22.2412C20.5318 22.2412 20.4733 22.225 20.418 22.1885L20.3633 22.1445L16.3574 18.2344L15.833 17.7236L15.3096 18.2344L11.3027 22.1455C11.2158 22.2264 11.144 22.2499 11.0576 22.25C11.0204 22.25 10.9879 22.2428 10.9551 22.2285L10.9453 22.2246L10.9346 22.2207L10.8525 22.1738L10.7959 22.1133C10.7632 22.0657 10.75 22.0222 10.75 21.9639V10.0361C10.75 10.0072 10.7534 9.98191 10.7607 9.95801L10.7959 9.88672C10.8277 9.84029 10.8673 9.80622 10.9346 9.7793L10.9453 9.77539L10.9551 9.77148C10.9715 9.76432 10.9881 9.75835 11.0049 9.75488L11.0576 9.75Z'
                         stroke='white'
-                        stroke-width='1.5'
+                        strokeWidth='1.5'
+                        fill={movie.isBookmarked ? "#fff" : "none"}
                         className='group-hover/bookmark:stroke-black group-hover/bookmark:fill-[#e39d12]'
                       />
                     </svg>
                   </div>
                 </motion.div>
 
-                {/* Title + Year below */}
                 <div className='mt-1 text-white text-[15px] flex flex-col'>
                   <div className='flex items-center gap-[10px]'>
                     <p className='font-medium leading-none'>
                       {movie.year}
                     </p>
-                    <img
-                      className='w-1 h-1'
-                      src='../public/dot.svg'
-                      alt='dot icon'
-                    />
+                    <span className='text-gray-400'>•</span>
                     <p>{movie.category}</p>
                   </div>
                   <p className='text-violet-600'>{movie.title}</p>

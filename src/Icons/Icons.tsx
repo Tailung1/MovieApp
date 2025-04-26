@@ -120,7 +120,7 @@ export function BookmarkIcon({
   return (
     <svg
       onClick={() => {
-        navigate("/bookMarked");
+        navigate("/bookmarked");
         setDirection("bookMarked");
         setInputPlaceholder("Search for bookmarked shows");
         setSearchMovie("");
