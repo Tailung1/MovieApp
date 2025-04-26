@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { HomeLogo } from "../Icons/Icons";
 import { MovieIcon } from "../Icons/Icons";
 import { SeriesIcon } from "../Icons/Icons";
@@ -8,9 +7,13 @@ import { useSearchMovie } from "../MovieContext";
 
 export default function Header() {
   const navigate = useNavigate();
- 
-  const { setInputPlaceholder, setSearchMovie, setDirection,direction } =
-    useSearchMovie();
+
+  const {
+    setInputPlaceholder,
+    setSearchMovie,
+    setDirection,
+    direction,
+  } = useSearchMovie();
   return (
     <header className='bg-[#161D2F] px-4 py-5'>
       <div className='flex justify-between items-center'>
