@@ -27,7 +27,7 @@ const Bookmarked = () => {
       <img
         src={movie.thumbnail}
         alt={movie.title}
-        className='rounded-lg mb-2 object-cover h-[120px]'
+        className='rounded-lg mb-2  h-[120px]'
       />
       <h2 className='text-lg font-semibold truncate text-white'>
         {movie.title}
