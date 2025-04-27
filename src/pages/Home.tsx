@@ -1,15 +1,12 @@
 import { useEffect, useRef } from "react";
 import data from "../movies.json";
 
-
 import SharedMovies from "../shared/SharedMovies";
 export default function Home() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-
-
   // Filter movies based on the search term directly
-  
+
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     const interval = setInterval(() => {
@@ -46,7 +43,7 @@ export default function Home() {
               <img
                 src={movie.thumbnail}
                 alt={movie.title}
-                className='w-full h-[140px] object-cover'
+                className='w-full h-[140px]'
               />
               <div className='flex flex-col'>
                 <div className='flex gap-[11px] items-center'>
