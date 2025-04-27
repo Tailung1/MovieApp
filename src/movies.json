@@ -40,7 +40,7 @@
     "category": "movie",
     "rating": "PG-13",
     "isBookmarked": false,
-    "trending": true,
+    "trending": false,
     "recommended": true
   },
   {
@@ -51,7 +51,7 @@
     "category": "movie",
     "rating": "PG-13",
     "isBookmarked": false,
-    "trending": false,
+    "trending": true,
     "recommended": false
   },
   {
@@ -95,7 +95,7 @@
     "category": "series",
     "rating": "TV-PG",
     "isBookmarked": false,
-    "trending": false,
+    "trending": true,
     "recommended": true
   },
   {

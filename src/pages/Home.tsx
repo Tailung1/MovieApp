@@ -1,31 +1,34 @@
-// Smooth auto scroll with intervals
-//   useEffect(() => {
-//     const scrollContainer = scrollRef.current;
-//     const interval = setInterval(() => {
-//       if (!scrollContainer) return;
 
-//       const { scrollLeft, clientWidth, scrollWidth } =
-//         scrollContainer;
 
-//       if (scrollLeft + clientWidth >= scrollWidth) {
-//         scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
-//       } else {
-//         scrollContainer.scrollBy({ left: 320, behavior: "smooth" });
-//       }
-//     }, 4000);
-
-//     return () => clearInterval(interval);
-//   }, []);
-
-import { useEffect, useRef, useState } from "react";
-import data from "../movies.json";
+import { useEffect, useRef, useState } from "react"
 import SharedMovies from "../shared/SharedMovies";
-import { useSearchMovie } from "../MovieContext";
+import { useSearchMovie} from "../MovieContext";
+
 
 export default function Home() {
-    const {toggleBookmark}=useSearchMovie()
+  // Smooth auto scroll with intervals
+  //   useEffect(() => {
+  //     const scrollContainer = scrollRef.current;
+  //     const interval = setInterval(() => {
+  //       if (!scrollContainer) return;
+
+  //       const { scrollLeft, clientWidth, scrollWidth } =
+  //         scrollContainer;
+
+  //       if (scrollLeft + clientWidth >= scrollWidth) {
+  //         scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
+  //       } else {
+  //         scrollContainer.scrollBy({ left: 320, behavior: "smooth" });
+  //       }
+  //     }, 4000);
+
+  //     return () => clearInterval(interval);
+  //   }, []);
+  const { toggleBookmark,originalMovies } = useSearchMovie();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+
+
 
   // Smooth, non-stop scrolling effect
   useEffect(() => {
@@ -92,7 +95,7 @@ export default function Home() {
       >
         <div className='flex gap-4'>
           {/* Duplicate the data to make it loop */}
-          {[...data, ...data].map((movie, index) => (
+          {[...originalMovies,...originalMovies].map((movie,index) => (
             <div
               key={index}
               className='relative snap-start flex-shrink-0 w-[240px] h-[140px] flex flex-col gap-2 rounded-md overflow-hidden group'
