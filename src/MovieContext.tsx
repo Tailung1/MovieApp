@@ -51,30 +51,24 @@ export default function MovieContext({
   const [direction, setDirection] = useState<string>("home");
 
   useEffect(() => {
-    const storedMovies = localStorage.getItem("movies");
-    if (storedMovies) {
-      const parsed = JSON.parse(storedMovies);
-      setMovies(parsed);
+    const stored = localStorage.getItem("movies");
+    if (stored) {
+      const parsed = JSON.parse(stored);
       setOriginalMovies(parsed);
+      setMovies(parsed);
     } else {
       localStorage.setItem("movies", JSON.stringify(data));
-      setMovies(data);
       setOriginalMovies(data);
+      setMovies(data);
     }
   }, []);
 
   const toggleBookmark = (id: number) => {
     const updated = originalMovies.map((m) =>
-      m.id === id ? { ...m, isBookmarked: !m.isBookmarked } : m
+      id === m.id ? { ...m, isBookmarked: !m.isBookmarked } : m
     );
-    setOriginalMovies(updated);
     localStorage.setItem("movies", JSON.stringify(updated));
-
-    // Also update currently displayed movies
-    const updatedDisplayed = movies.map((m) =>
-      m.id === id ? { ...m, isBookmarked: !m.isBookmarked } : m
-    );
-    setMovies(updatedDisplayed);
+    setOriginalMovies(updated);
   };
 
   return (
