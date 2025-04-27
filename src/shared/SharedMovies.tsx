@@ -116,11 +116,38 @@ export default function SharedMovies({
                     className='w-full h-full'
                   />
 
+                  {"O V E R L A Y"}
+                  {"O V E R L A Y"}
+                  {"O V E R L A Y"}
+                  {"O V E R L A Y"}
+
                   <div
-                    className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity'
+                    className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity '
                     style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
                   />
 
+                  <div
+                    className='absolute inset-0 flex opacity-0   group-hover:opacity-100 bg-white/25 justify-center items-center '
+                    style={{
+                      clipPath: "inset(35px 35px round 15px)",
+                      // Ensure the background doesn't block visibility
+                    }}
+                  >
+                    <img
+                      className='absolute inset-0 w-full h-full'
+                      src={movie.thumbnail}
+                      alt='movie thumbnail'
+                    />
+
+                    <div className='flex justify-center items-center gap-[5px] z-10'>
+                      <img
+                        className='w-6 h-6'
+                        src='/play.svg'
+                        alt='play icon'
+                      />
+                      <p className='text-white'>Play</p>
+                    </div>
+                  </div>
                   <div
                     onClick={() => toggleBookmark(movie.id)}
                     className='group/bookmark absolute top-2 right-2 z-20 cursor-pointer'
