@@ -127,7 +127,7 @@ export default function SharedMovies({
                   />
 
                   <div
-                    className='absolute inset-0 flex opacity-0   group-hover:opacity-100 bg-white/25 justify-center items-center '
+                    className='absolute inset-0 flex opacity-0 group-hover:opacity-100 bg-red-600   justify-center items-center '
                     style={{
                       clipPath: "inset(35px 35px round 15px)",
                       // Ensure the background doesn't block visibility
@@ -139,7 +139,7 @@ export default function SharedMovies({
                       alt='movie thumbnail'
                     />
 
-                    <div className='flex justify-center items-center gap-[5px] z-10'>
+                    <div className='flex w-full h-full justify-center items-center bg-white/25 gap-[5px] z-10'>
                       <img
                         className='w-6 h-6'
                         src='/play.svg'
