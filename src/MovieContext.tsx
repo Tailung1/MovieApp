@@ -55,11 +55,9 @@ export default function MovieContext({
     if (stored) {
       const parsed = JSON.parse(stored);
       setOriginalMovies(parsed);
-      setMovies(parsed);
     } else {
       localStorage.setItem("movies", JSON.stringify(data));
       setOriginalMovies(data);
-      setMovies(data);
     }
   }, []);
 
