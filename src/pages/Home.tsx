@@ -53,7 +53,7 @@ export default function Home() {
                   <span className='text-white text-[14px]'>
                     {movie.year}
                   </span>
-                  <img className='w-1' src='../public/dot.svg' />
+                  <span className='text-gray-400'>•</span>
                   <span className='text-white text-[14px]'>
                     {movie.category}
                   </span>
@@ -68,10 +68,7 @@ export default function Home() {
       </div>
 
       {/* Recommended / Filtered Movies Section */}
-      <SharedMovies
-        title={"Recommended for you"}
-        category={true}
-      />
+      <SharedMovies title={"Recommended for you"} category={true} />
     </div>
   );
 }

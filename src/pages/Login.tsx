@@ -87,7 +87,7 @@ export default function SignUp() {
       >
         <img
           className='absolute left-[45%] top-[-70px]'
-          src='../public/Movie.svg'
+          src='/Movie.svg'
           alt='movie icon'
         />
         <h2 className='text-violet-500 text-3xl'>Login</h2>

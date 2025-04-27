@@ -19,7 +19,7 @@ export default function Header() {
       <div className='flex justify-between items-center'>
         <img
           className='w-[25px] shrink-0'
-          src='../public/Movie.svg'
+          src='/Movie.svg'
           alt='Logo'
         />
 
