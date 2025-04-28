@@ -101,14 +101,14 @@ export default function SharedMovies({
         ) : (
           <AnimatePresence mode='popLayout'>
             {movies.map((movie) => (
-              <div key={movie.id} className='flex flex-col'>
+              <div key={movie.id} className='flex flex-col w-[164px]'>
                 <motion.div
                   layout
                   initial={{ opacity: 0, y: 20, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -20, scale: 0.9 }}
                   transition={{ duration: 0.35, ease: easeInOut }}
-                  className='w-[164px] h-[110px] rounded-[8px] overflow-hidden cursor-pointer relative group'
+                  className=' h-[110px] rounded-[8px] overflow-hidden cursor-pointer relative group'
                 >
                   <img
                     src={movie.thumbnail}
