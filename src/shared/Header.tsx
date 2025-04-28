@@ -15,51 +15,54 @@ export default function Header() {
     direction,
   } = useSearchMovie();
   return (
-    <header className='bg-[#161D2F] px-4 py-5'>
-      <div className='flex justify-between items-center'>
-        <img
-          className='w-[25px] shrink-0'
-          src='/Movie.svg'
-          alt='Logo'
-        />
+    <div className='md:bg-[#10141E] md:pt-6 md:px-4 '>
+      {" "}
+      <header className='bg-[#161D2F] px-4 py-5 md:rounded-lg'>
+        <div className='flex justify-between items-center'>
+          <img
+            className='w-[25px] shrink-0'
+            src='/Movie.svg'
+            alt='Logo'
+          />
 
-        <div className='flex gap-4 h-[40px]  items-center flex-nowrap overflow-hidden'>
-          <HomeLogo
-            navigate={navigate}
-            direction={direction}
-            setDirection={setDirection}
-            setInputPlaceholder={setInputPlaceholder}
-            setSearchMovie={setSearchMovie}
-          />
-          <MovieIcon
-            navigate={navigate}
-            direction={direction}
-            setDirection={setDirection}
-            setInputPlaceholder={setInputPlaceholder}
-            setSearchMovie={setSearchMovie}
-          />
-          <SeriesIcon
-            navigate={navigate}
-            direction={direction}
-            setDirection={setDirection}
-            setInputPlaceholder={setInputPlaceholder}
-            setSearchMovie={setSearchMovie}
-          />
-          <BookmarkIcon
-            navigate={navigate}
-            direction={direction}
-            setDirection={setDirection}
-            setInputPlaceholder={setInputPlaceholder}
-            setSearchMovie={setSearchMovie}
+          <div className='flex gap-4 h-[40px]  items-center flex-nowrap overflow-hidden'>
+            <HomeLogo
+              navigate={navigate}
+              direction={direction}
+              setDirection={setDirection}
+              setInputPlaceholder={setInputPlaceholder}
+              setSearchMovie={setSearchMovie}
+            />
+            <MovieIcon
+              navigate={navigate}
+              direction={direction}
+              setDirection={setDirection}
+              setInputPlaceholder={setInputPlaceholder}
+              setSearchMovie={setSearchMovie}
+            />
+            <SeriesIcon
+              navigate={navigate}
+              direction={direction}
+              setDirection={setDirection}
+              setInputPlaceholder={setInputPlaceholder}
+              setSearchMovie={setSearchMovie}
+            />
+            <BookmarkIcon
+              navigate={navigate}
+              direction={direction}
+              setDirection={setDirection}
+              setInputPlaceholder={setInputPlaceholder}
+              setSearchMovie={setSearchMovie}
+            />
+          </div>
+
+          <img
+            className='w-[24px] h-[24px] shrink-0'
+            src='../src/assets/personIcon.svg'
+            alt='User'
           />
         </div>
-
-        <img
-          className='w-[24px] h-[24px] shrink-0'
-          src='../src/assets/personIcon.svg'
-          alt='User'
-        />
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }
