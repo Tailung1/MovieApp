@@ -94,7 +94,7 @@ export default function Home() {
             (movie, index) => (
               <div
                 key={index}
-                className='relative snap-start flex-shrink-0 w-[240px] h-[150px] flex flex-col gap-2 rounded-md overflow-hidden group md:w-[470px] md:h-[230px] md:gap-[40px] md:lg-[470px]'
+                className='relative snap-start flex-shrink-0 w-[220px] h-[160px] flex flex-col gap-2 rounded-md overflow-hidden group md:w-[450px] md:h-[240px] md:gap-[40px] '
               >
                 <img
                   src={movie.thumbnail}
@@ -106,14 +106,14 @@ export default function Home() {
                   style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
                 />
                 <div
-                  className='absolute inset-0 opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity flex justify-center items-center'
-                  style={{
-                    clipPath: "inset(45px 70px 65px round 15px)",
-                  }}
+                  className=' clip-custom-home absolute inset-0 opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity flex justify-center items-center'
+                  //   style={{
+                  //     clipPath: "inset(45px 70px 65px round 15px)",
+                  //   }}
                 >
                   <div className='absolute  top-[-10px] w-full h-full flex gap-[8px] items-center justify-center bg-white/25 z-10'>
-                    <img src='/play.svg' alt='play icon' />
-                    <p className='text-white'>Play</p>
+                    <img className="w-6 h-6 md:w-10 md:h-10" src='/play.svg' alt='play icon' />
+                    <p className='text-white md:text-[34px]'>Play</p>
                   </div>
                 </div>
                 <div

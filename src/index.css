@@ -10,3 +10,19 @@
   -ms-overflow-style: none; /* IE/Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+.clip-custom {
+  clip-path: inset(35px 35px round 15px);
+}
+.clip-custom-home {
+  clip-path: inset(45px 70px 65px round 15px);
+}
+
+@media (min-width: 768px) {
+  .clip-custom {
+    clip-path: inset(55px 80px round 15px); /* Tablet version */
+  }
+  .clip-custom-home {
+    clip-path: inset(80px 150px 95px round 15px);
+  }
+}

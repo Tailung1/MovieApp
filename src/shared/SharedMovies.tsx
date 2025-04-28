@@ -96,6 +96,8 @@ export default function SharedMovies({
               <div className='bg-gray-600 h-[110px] rounded-[8px] mb-4'></div>
               <div className='bg-gray-600 h-[20px] w-[80%] rounded mb-2'></div>
               <div className='bg-gray-600 h-[14px] w-[60%] rounded'></div>
+              adjust element sizes and add responsive styles for
+              tablet and laptop
             </div>
           </div>
         ) : (
@@ -130,11 +132,11 @@ export default function SharedMovies({
                   />
 
                   <div
-                    className='absolute inset-0 flex opacity-0 group-hover:opacity-100 bg-red-600   justify-center items-center '
-                    style={{
-                      clipPath: "inset(35px 35px round 15px)",
-                      // Ensure the background doesn't block visibility
-                    }}
+                    className=' clip-custom absolute inset-0 flex opacity-0 group-hover:opacity-100 bg-red-600   justify-center items-center '
+                    // style={{
+                    //   clipPath: "inset(35px 35px round 15px)",
+                    //   // Ensure the background doesn't block visibility
+                    // }}
                   >
                     <img
                       className='absolute inset-0 w-full h-full'
@@ -144,11 +146,11 @@ export default function SharedMovies({
 
                     <div className='flex w-full h-full justify-center items-center bg-white/25 gap-[5px] z-10'>
                       <img
-                        className='w-6 h-6'
+                        className='w-6 h-6 md:w-8 md:h-8'
                         src='/play.svg'
                         alt='play icon'
                       />
-                      <p className='text-white'>Play</p>
+                      <p className='text-white md:text-[25px]'>Play</p>
                     </div>
                   </div>
                   <div
