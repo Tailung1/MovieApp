@@ -94,12 +94,12 @@ export default function Home() {
             (movie, index) => (
               <div
                 key={index}
-                className='relative snap-start flex-shrink-0 w-[240px] h-[140px] flex flex-col gap-2 rounded-md overflow-hidden group'
+                className='relative snap-start flex-shrink-0 w-[240px] h-[150px] flex flex-col gap-2 rounded-md overflow-hidden group'
               >
                 <img
                   src={movie.thumbnail}
                   alt={movie.title}
-                  className='w-full h-[140px]'
+                  className='w-full h-full'
                 />
                 <div
                   className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity'
@@ -108,7 +108,7 @@ export default function Home() {
                 <div
                   className='absolute inset-0 opacity-0 group-hover:opacity-100 cursor-pointer transition-opacity flex justify-center items-center'
                   style={{
-                    clipPath: "inset(35px 65px 55px round 15px)",
+                    clipPath: "inset(45px 70px 65px round 15px)",
                   }}
                 >
                   <div className='absolute  top-[-10px] w-full h-full flex gap-[8px] items-center justify-center bg-white/25 z-10'>
