@@ -94,7 +94,7 @@ export default function Home() {
             (movie, index) => (
               <div
                 key={index}
-                className='relative snap-start flex-shrink-0 w-[240px] h-[150px] flex flex-col gap-2 rounded-md overflow-hidden group'
+                className='relative snap-start flex-shrink-0 w-[240px] h-[150px] flex flex-col gap-2 rounded-md overflow-hidden group md:w-[470px] md:h-[230px] md:gap-[40px] md:lg-[470px]'
               >
                 <img
                   src={movie.thumbnail}

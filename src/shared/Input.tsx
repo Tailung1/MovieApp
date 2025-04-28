@@ -10,7 +10,7 @@ export default function Input() {
         value={searchMovie}
         onChange={(e) => setSearchMovie(e.target.value)}
         placeholder={inputPlaceHolder}
-        className='bg-transparent outline-none w-full   text-[10px] md:text-lg text-red-700 '
+        className='bg-transparent outline-none w-full md:text-[24px] text-red-700 '
         type='text'
       />
     </div>
