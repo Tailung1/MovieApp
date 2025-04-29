@@ -124,7 +124,7 @@ export default function SharedMovies({
                   {"O V E R L A Y"}
                   {"O V E R L A Y"}
                   {"O V E R L A Y"}
-                  {"O V E R L A Y"}
+                  
 
                   <div
                     className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity '
