@@ -124,7 +124,6 @@ export default function SharedMovies({
                   {"O V E R L A Y"}
                   {"O V E R L A Y"}
                   {"O V E R L A Y"}
-                  
 
                   <div
                     className='absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity '
@@ -150,7 +149,9 @@ export default function SharedMovies({
                         src='/play.svg'
                         alt='play icon'
                       />
-                      <p className='text-white md:text-[25px]'>Play</p>
+                      <p className='text-white md:text-[25px]'>
+                        Play
+                      </p>
                     </div>
                   </div>
                   <div
