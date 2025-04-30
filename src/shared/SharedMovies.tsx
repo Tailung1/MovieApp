@@ -89,7 +89,7 @@ export default function SharedMovies({
         )}
       </h2>
 
-      <div className='flex  flex-wrap gap-[15px] md:gap-[20px] lg:gap-[40px]'>
+      <div className='flex  flex-wrap gap-[15px] md:gap-[20px] lg:gap-[40px] lg:w-[1440px]'>
         {!movieMatches ? (
           <div className='w-full p-4'>
             <div className='animate-pulse'>

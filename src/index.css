@@ -23,6 +23,6 @@
     clip-path: inset(55px 80px round 15px); /* Tablet version */
   }
   .clip-custom-home {
-    clip-path: inset(80px 150px 95px round 15px);
+    clip-path: inset(60px 130px 75px round 15px);
   }
 }
