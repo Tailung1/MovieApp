@@ -56,7 +56,7 @@ const Bookmarked = () => {
   );
 
   return (
-    <div className='bg-[#10141E] min-h-screen min-w-[100vw] p-6'>
+    <div className='bg-[#10141E] min-h-screen min-w-[100vw] px-4'>
       {renderSection(bookmarkedMovies, "Movies")}
       {renderSection(bookmarkedSeries, "Series")}
     </div>

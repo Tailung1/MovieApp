@@ -89,7 +89,7 @@ export default function SharedMovies({
         )}
       </h2>
 
-      <div className='flex  flex-wrap gap-[15px] md:gap-[20px] lg:gap-[40px] lg:w-[1440px]'>
+      <div className='flex  flex-wrap gap-[15px] md:gap-[20px] lg:gap-[40px]'>
         {!movieMatches ? (
           <div className='w-full p-4'>
             <div className='animate-pulse'>
@@ -184,7 +184,7 @@ export default function SharedMovies({
 
                 <div className='mt-1 text-white text-[15px] flex flex-col'>
                   <div className='flex items-center gap-[10px]'>
-                    <p className='font-medium leading-none'>
+                    <p className='font-medium leading-none '>
                       {movie.year}
                     </p>
                     <span className='text-gray-400'>•</span>

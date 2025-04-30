@@ -4,7 +4,7 @@ export default function Input() {
   const { searchMovie, setSearchMovie, inputPlaceHolder } =
     useSearchMovie();
   return (
-    <div className='flex gap-[16px] pl-[16px] py-8 bg-[#10141E]'>
+    <div className='flex gap-[16px] pl-[16px] py-4 bg-[#10141E]'>
       <img src='/search.svg' alt='search icon' />
       <input
         value={searchMovie}

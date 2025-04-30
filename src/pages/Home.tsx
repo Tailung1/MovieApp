@@ -81,7 +81,7 @@ export default function Home() {
       </h2>
       <div
         ref={scrollRef}
-        className='ml-4 overflow-x-auto whitespace-nowrap scrollbar-hide'
+        className='ml-4 overflow-x-auto whitespace-nowrap '
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -91,7 +91,7 @@ export default function Home() {
             (movie, index) => (
               <div
                 key={index}
-                className='relative snap-start flex-shrink-0 w-[220px] h-[160px] flex flex-col gap-2 rounded-md overflow-hidden group md:w-[450px] md:h-[240px] md:gap-[40px] '
+                className='relative snap-start flex-shrink-0 w-[220px] h-[160px] flex flex-col gap-2 rounded-md overflow-hidden group md:w-[400px] md:h-[200px] md:gap-[40px] '
               >
                 <img
                   src={movie.thumbnail}
@@ -147,15 +147,17 @@ export default function Home() {
                 </div>
                 <div className='flex flex-col absolute left-2 bottom-2'>
                   <div className='flex gap-[11px] items-center'>
-                    <span className='text-white text-[14px]'>
+                    <span className='text-white text-[14px] lg:text-[22px] '>
                       {movie.year}
                     </span>
-                    <span className='text-gray-400'>•</span>
-                    <span className='text-white text-[16px]'>
+                    <span className='text-gray-400 lg:text-[22px]'>
+                      •
+                    </span>
+                    <span className=' text-[16px] text-white lg:text-[22px]'>
                       {movie.category}
                     </span>
                   </div>
-                  <p className='text-white text-[17px]'>
+                  <p className='text-violet-700 text-[17px] lg:text-[22px]'>
                     {movie.title}
                   </p>
                 </div>
