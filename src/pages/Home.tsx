@@ -75,7 +75,7 @@ export default function Home() {
   };
 
   return (
-    <div className='bg-[#10141E] min-h-screen'>
+    <div className='bg-[#10141E]'>
       <h2 className='text-white pb-[15px] ml-4 text-[20px]'>
         Trending
       </h2>

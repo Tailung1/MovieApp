@@ -64,7 +64,7 @@ export default function SharedMovies({
   ]);
 
   return (
-    <div className='px-[16px] flex flex-col mt-[24px]'>
+    <div className='px-[16px]  flex flex-col mt-[24px]  min-h-screen'>
       <h2 className='text-white pb-[15px] text-[20px] min-h-[24px]'>
         {searchMovie ? (
           !movieMatches ? (
@@ -89,15 +89,13 @@ export default function SharedMovies({
         )}
       </h2>
 
-      <div className='flex flex-wrap gap-[15px] md:gap-[20px] lg:gap-[40px]'>
+      <div className='flex  flex-wrap gap-[15px] md:gap-[20px] lg:gap-[40px] lg:w-[1440px]'>
         {!movieMatches ? (
           <div className='w-full p-4'>
             <div className='animate-pulse'>
               <div className='bg-gray-600 h-[110px] rounded-[8px] mb-4'></div>
               <div className='bg-gray-600 h-[20px] w-[80%] rounded mb-2'></div>
               <div className='bg-gray-600 h-[14px] w-[60%] rounded'></div>
-              adjust element sizes and add responsive styles for
-              tablet and laptop
             </div>
           </div>
         ) : (
@@ -105,7 +103,7 @@ export default function SharedMovies({
             {movies.map((movie) => (
               <div
                 key={movie.id}
-                className='flex flex-col w-[160px] h-[140px] md:w-[220px] md:h-[180px] lg:w-[280px] lg:h-[210px] '
+                className='flex flex-col w-[135px] h-[140px] md:w-[220px] md:h-[180px] lg:w-[280px] lg:h-[210px] '
               >
                 <motion.div
                   layout

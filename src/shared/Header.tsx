@@ -19,16 +19,16 @@ export default function Header() {
     direction,
   } = useSearchMovie();
   return (
-    <header className='md:bg-[#10141E] md:pt-6  md:px-4 '>
+    <header className='md:bg-[#10141E] md:pt-6  md:px-4  lg:h-[650px]'>
       {" "}
-      <div className='bg-[#161D2F]  flex justify-between items-center px-4 py-3 md:rounded-lg lg:flex-col'>
+      <div className='bg-[#161D2F]  flex justify-between items-center px-4 py-3 md:rounded-lg lg:flex-col lg:h-full '>
         <img
           className='w-[25px] shrink-0'
           src='/Movie.svg'
           alt='Logo'
         />
 
-        <div className='flex gap-4 h-[40px]  items-center  lg:min-h-screen lg:flex-col lg:pt-[65px] lg:w-7'>
+        <div className='flex gap-4   items-center  h-full lg:flex-col lg:pt-[65px] lg:w-7 '>
           <HomeLogo
             navigate={navigate}
             direction={direction}
@@ -60,7 +60,7 @@ export default function Header() {
         </div>
 
         <img
-          className='w-[24px] h-[24px] shrink-0'
+          className='w-[24px] h-[24px]'
           src='../src/assets/personIcon.svg'
           alt='User'
         />
