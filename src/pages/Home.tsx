@@ -75,18 +75,15 @@ export default function Home() {
   };
 
   return (
-    <div className='bg-[#10141E] min-h-[100vh]'>
+    <div className='bg-[#10141E] min-h-screen'>
       <h2 className='text-white pb-[15px] ml-4 text-[20px]'>
         Trending
       </h2>
       <div
         ref={scrollRef}
-        className='ml-4 overflow-x-hidden scrollbar-hide'
-        style={{
-          scrollBehavior: "smooth", // Smooth scrolling
-        }}
-        onMouseEnter={handleMouseEnter} // Listen for mouse enter
-        onMouseLeave={handleMouseLeave} // Listen for mouse leave
+        className='ml-4 overflow-x-auto whitespace-nowrap scrollbar-hide'
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <div className='flex gap-4'>
           {/* Duplicate the data to make it loop */}
@@ -112,7 +109,11 @@ export default function Home() {
                   //   }}
                 >
                   <div className='absolute  top-[-10px] w-full h-full flex gap-[8px] items-center justify-center bg-white/25 z-10'>
-                    <img className="w-6 h-6 md:w-10 md:h-10" src='/play.svg' alt='play icon' />
+                    <img
+                      className='w-6 h-6 md:w-10 md:h-10'
+                      src='/play.svg'
+                      alt='play icon'
+                    />
                     <p className='text-white md:text-[34px]'>Play</p>
                   </div>
                 </div>
