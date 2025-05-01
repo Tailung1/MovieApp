@@ -5,9 +5,7 @@ import { BookmarkIcon } from "../Icons/Icons";
 import { useNavigate } from "react-router-dom";
 import { useSearchMovie } from "../MovieContext";
 
-type HeaderProps = {
-  className: string;
-};
+
 
 export default function Header() {
   const navigate = useNavigate();
