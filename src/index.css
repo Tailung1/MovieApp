@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 /* hide scrollbar globally or via class */
-
-.no-scrollbar::-webkit-scrollbar {
+.scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
-
-.no-scrollbar {
-  scrollbar-width: none; /* Firefox */
+.scrollbar-hide {
   -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
 }
+
+
 
 .clip-custom {
   clip-path: inset(35px 35px round 15px);

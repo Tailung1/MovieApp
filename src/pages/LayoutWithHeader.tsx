@@ -4,9 +4,9 @@ import { Outlet } from "react-router-dom";
 
 export default function LayoutWithHeader() {
   return (
-    <div className='lg:flex bg-[#10141E] overflow-hidden '>
+    <div className='lg:flex bg-[#10141E] overflow-x-hidden '>
       <Header />
-      <div className=' min-w-0  '>
+      <div className=' min-w-0'>
         <Input />
         <Outlet />
       </div>

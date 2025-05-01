@@ -81,7 +81,7 @@ export default function Home() {
       </h2>
       <div
         ref={scrollRef}
-        className='ml-4 overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar  '
+        className='ml-4 overflow-x-auto whitespace-nowrap scroll-smooth scrollbar-hide'
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
