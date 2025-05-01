@@ -8,7 +8,7 @@
     "rating": "PG-13",
     "isBookmarked": false,
     "trending": true,
-    "recommended": true
+    "recommended": false
   },
   {
     "id": 2,
@@ -19,7 +19,7 @@
     "rating": "TV-MA",
     "isBookmarked": false,
     "trending": false,
-    "recommended": true
+    "recommended": false
   },
   {
     "id": 3,
@@ -129,7 +129,7 @@
     "rating": "TV-PG",
     "isBookmarked": false,
     "trending": true,
-    "recommended": false
+    "recommended": true
   },
   {
     "id": 13,

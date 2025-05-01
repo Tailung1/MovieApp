@@ -5,8 +5,6 @@ import { BookmarkIcon } from "../Icons/Icons";
 import { useNavigate } from "react-router-dom";
 import { useSearchMovie } from "../MovieContext";
 
-
-
 export default function Header() {
   const navigate = useNavigate();
 

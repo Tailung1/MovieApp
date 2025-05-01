@@ -75,13 +75,13 @@ export default function Home() {
   };
 
   return (
-    <div className='bg-[#10141E]'>
+    <div className='bg-[#10141E] pt-[24px]'>
       <h2 className='text-white pb-[15px] ml-4 text-[20px]'>
         Trending
       </h2>
       <div
         ref={scrollRef}
-        className='ml-4 overflow-x-auto whitespace-nowrap '
+        className='ml-4 overflow-x-auto whitespace-nowrap scroll-smooth no-scrollbar  '
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

@@ -3,13 +3,13 @@ import Input from "../shared/Input";
 import { Outlet } from "react-router-dom";
 
 export default function LayoutWithHeader() {
-    return (
-      <div className='lg:flex bg-[#10141E] overflow-hidden'>
-        <Header />
-        <div>
-          <Input />
-          <Outlet />
-        </div>
+  return (
+    <div className='lg:flex bg-[#10141E] overflow-hidden '>
+      <Header />
+      <div className=' min-w-0  '>
+        <Input />
+        <Outlet />
       </div>
-    );
+    </div>
+  );
 }
