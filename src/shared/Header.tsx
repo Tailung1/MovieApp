@@ -57,7 +57,7 @@ export default function Header() {
 
         <img
           className='w-[24px] h-[24px]'
-          src='../src/assets/personIcon.svg'
+          src='./personIcon.svg'
           alt='User'
         />
       </div>
