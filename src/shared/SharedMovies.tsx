@@ -64,7 +64,7 @@ export default function SharedMovies({
   ]);
 
   return (
-    <div className='px-[16px]  flex flex-col mt-[24px]  min-h-screen'>
+    <div className='px-[16px]  flex flex-col my-[24px]  max-h-screen'>
       <h2 className='text-white pb-[15px] text-[20px] min-h-[24px]'>
         {searchMovie ? (
           !movieMatches ? (
