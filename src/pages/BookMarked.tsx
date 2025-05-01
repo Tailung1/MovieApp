@@ -1,5 +1,7 @@
+
 import { useSearchMovie } from "../MovieContext";
 import { IMovie } from "../MovieContext";
+
 
 const Bookmarked = () => {
   const { originalMovies, toggleBookmark, searchMovie } =
@@ -16,8 +18,10 @@ const Bookmarked = () => {
             .includes(searchMovie.toLowerCase()))
     );
 
-  const bookmarkedMovies = getFiltered("movie");
-  const bookmarkedSeries = getFiltered("series");
+
+   const bookmarkedMovies = getFiltered("movie");
+    const bookmarkedSeries = getFiltered("series");
+
 
   const MovieCard = (movie: IMovie) => (
     <div
@@ -47,7 +51,7 @@ const Bookmarked = () => {
       <h2 className='text-2xl font-semibold mb-4 text-white'>
         {items.length > 0
           ? `Bookmarked ${label}`
-          : `No bookmarked ${label.toLowerCase()} yet.`}
+          :searchMovie && items.length<1? `No ${label} found for "${searchMovie}"` : `No bookmarked ${label.toLowerCase()} yet.`}
       </h2>
       <div className='flex flex-wrap gap-4'>
         {items.map(MovieCard)}
