@@ -103,7 +103,7 @@ export default function SharedMovies({
             {movies.map((movie) => (
               <div
                 key={movie.id}
-                className='flex flex-col w-[135px] h-[140px] md:w-[220px] md:h-[180px] lg:w-[280px] lg:h-[210px] '
+                className='flex flex-col w-[160px] h-[140px] md:w-[220px] md:h-[180px] lg:w-[280px] lg:h-[210px] '
               >
                 <motion.div
                   layout
