@@ -17,7 +17,7 @@ export default function Home() {
   //       } else {
   //         scrollContainer.scrollBy({ left: 320, behavior: "smooth" });
   //       }
-  //     }, 4000);
+  //     }, 3000);
 
   //     return () => clearInterval(interval);
   //   }, []);
@@ -66,13 +66,13 @@ export default function Home() {
   }, [isHovered]); // Re-run the effect when hover state changes
 
   // Handle hover start and end events
-  const handleMouseEnter = () => {
-    setIsHovered(true); // Stop scrolling when hover starts
-  };
+//   const handleMouseEnter = () => {
+//     setIsHovered(true); // Stop scrolling when hover starts
+//   };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false); // Resume scrolling when hover ends
-  };
+//   const handleMouseLeave = () => {
+//     setIsHovered(false); // Resume scrolling when hover ends
+//   };
 
   return (
     <div className='bg-[#10141E] pt-[24px]'>
@@ -82,8 +82,8 @@ export default function Home() {
       <div
         ref={scrollRef}
         className='ml-4 overflow-x-auto whitespace-nowrap scroll-smooth scrollbar-hide'
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={()=>setIsHovered(prev => !prev)}
+        onMouseLeave={()=>setIsHovered(prev => !prev)}
       >
         <div className='flex gap-4'>
           {/* Duplicate the data to make it loop */}
