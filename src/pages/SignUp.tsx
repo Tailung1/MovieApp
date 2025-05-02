@@ -2,7 +2,7 @@ import FloatingInput from "./FloatingInput";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useReducer } from "react";
- const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 interface initialStateTypes {
   email: string;
   password: string;
@@ -12,7 +12,7 @@ interface initialStateTypes {
   passwordError: boolean;
   repeatPasswordError: boolean;
   allFill: boolean;
-  isClicked:boolean
+  isClicked: boolean;
 }
 
 const initialState: initialStateTypes = {
@@ -24,7 +24,7 @@ const initialState: initialStateTypes = {
   passwordError: false,
   repeatPasswordError: false,
   allFill: false,
-  isClicked:false
+  isClicked: false,
 };
 
 type Actions =
@@ -81,10 +81,9 @@ export default function SignUp() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch({type:"IS_CLICKED"})
+    dispatch({ type: "IS_CLICKED" });
     const emailIsEmpty = state.email.trim() === "";
     const passwordIsEmpty = state.password.trim() === "";
     const repeatPasswordIsEmpty = state.repeatPassword.trim() === "";
@@ -105,11 +104,11 @@ export default function SignUp() {
         dispatch({ type: "PASSWORDSMATCHES" });
       }
 
-      return; // 🛑 Stop submit
+      return;
     }
-    if(!emailRegex.test(state.email)) {
-        dispatch({type:"SET_EMAIL_ERROR"})
-        return
+    if (!emailRegex.test(state.email)) {
+      dispatch({ type: "SET_EMAIL_ERROR" });
+      return;
     }
 
     localStorage.setItem(
