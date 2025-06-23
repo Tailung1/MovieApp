@@ -37,7 +37,7 @@ const Bookmarked = () => {
         onClick={() => toggleBookmark(movie.id)}
         className='mt-2 bg-[#5A698F] hover:bg-[#FC4747] hover:text-white text-white text-sm px-3 py-1 rounded'
       >
-        {movie.isBookmarked ? "Unbookmark" : "Bookmark"}
+        {"Unbookmark"}
       </button>
     </div>
   );
