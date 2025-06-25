@@ -8,7 +8,6 @@ import Movies from "./pages/Movies";
 import BookMarked from "./pages/BookMarked";
 import LayoutWithHeader from "./pages/LayoutWithHeader";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,9 +20,7 @@ const router = createBrowserRouter([
 
   // Routes WITH Header (Home, etc.)
   {
-    element: (
-     <LayoutWithHeader />
-    ),
+    element: <LayoutWithHeader />,
     children: [
       { path: "/home", element: <Home /> },
       { path: "/series", element: <Series /> },
